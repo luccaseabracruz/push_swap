@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:12:49 by lseabra-          #+#    #+#              #
-#    Updated: 2025/05/28 19:28:19 by lseabra-         ###   ########.fr        #
+#    Updated: 2025/05/28 19:30:26 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ $(BUILD_PATH):
 	$(MKDIR) $(BUILD_PATH)
 
 clean:
-	$(RMDIR) (BUILD_PATH)
+	$(RMDIR) $(BUILD_PATH)
 	make -C $(FT_PRINTF_PATH) clean
 
 fclean: clean
