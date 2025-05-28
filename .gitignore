@@ -1,3 +1,8 @@
+# My config
+.vscode
+a.out
+build
+
 # Prerequisites
 *.d
 
