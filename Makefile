@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:12:49 by lseabra-          #+#    #+#              #
-#    Updated: 2025/05/28 19:30:26 by lseabra-         ###   ########.fr        #
+#    Updated: 2025/05/29 15:34:14 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ RM = rm -f
 RMDIR = rm -rf
 
 NAME = push_swap.a
-SRCS = swap.c
+SRCS = swap.c push.c utils.c
 OBJS = $(addprefix $(BUILD_PATH)/, $(SRCS:.c=.o))
 BUILD_PATH = build
 FT_PRINTF_PATH = ft_printf
