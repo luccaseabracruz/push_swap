@@ -6,20 +6,42 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 18:29:37 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/28 18:59:21 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/29 18:07:10 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	swap(int *stack)
+#include "push_swap.h"
+#include "ft_printf/ft_printf.h"
+
+static void	swap(t_stack *stack)
 {
 	int	temp;
 
-	if (stack[0] && stack[1])
+	if (stack->arr[0] && stack->arr[1])
 	{
-		temp = stack[0];
-		stack[0] = stack[1];
-		stack[1] = temp;
+		temp = stack->arr[0];
+		stack->arr[0] = stack->arr[1];
+		stack->arr[1] = temp;
 	}
+}
+
+void	sa(t_stack *a)
+{
+	swap(a);
+	ft_printf("sa\n");
+}
+
+void	sb(t_stack *b)
+{
+	swap(b);
+	ft_printf("sb\n");
+}
+
+void	ss(t_stack *a, t_stack *b)
+{
+	swap(a);
+	swap(b);
+	ft_printf("ss\n");
 }
 
 // #include <stdio.h>
