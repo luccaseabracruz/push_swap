@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:58:18 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/29 16:50:07 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/09 14:02:58 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	push(t_stack *from, t_stack *to)
 {
 	int	i;
 	int	value;
-	
+
 	if (from->len <= 0)
 		return ;
 	value = from->arr[0];
