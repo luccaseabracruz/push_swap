@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:30:32 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/29 18:02:56 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/09 13:01:49 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ int	main(int argc, char **argv)
 
 	if (!init_stacks(&a, &b, (argv + 1), (argc - 1)))
 		return (1);
+	push(&a, &b);
+	push(&a, &b);
+	push(&a, &b);
 	print_stacks(&a, &b);
-	sa(&a); //operation to be tested
+	ra(&a); //operation to be tested
 	print_stacks(&a, &b);
-	push(&a, &b); //operation to be tested
-	push(&a, &b); //operation to be tested
+	rb(&b);
 	print_stacks(&a, &b);
-	sb(&b);
-	print_stacks(&a, &b);
-	ss(&a, &b);
+	rr(&a, &b); //operation to be tested
 	print_stacks(&a, &b);
 	free(a.arr);
 	free(b.arr);
