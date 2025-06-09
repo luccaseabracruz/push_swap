@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/29 16:54:49 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/09 15:45:48 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	init_stacks(t_stack *a, t_stack *b, char **arr, int len)
 {
 	int	i;
 
-	a->arr = (int *)ft_calloc(len, sizeof(int));
+	a->arr = (int *)ft_calloc((size_t)len, sizeof(int));
 	if (!a->arr)
 		return (0);
-	b->arr = (int *)ft_calloc(len, sizeof(int));
+	b->arr = (int *)ft_calloc((size_t)len, sizeof(int));
 	if (!b->arr)
 	{
-		free(a);
+		free(a->arr);
 		return (0);
 	}
 	a->len = len;
