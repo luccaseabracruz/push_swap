@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:30:32 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/09 13:01:49 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/09 13:59:41 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,21 @@ void	print_stacks(t_stack *a, t_stack *b)
 	ft_printf("\n\n");
 }
 
+// static void	print_stack(t_stack *stack)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	ft_printf("A\n");
+// 	ft_printf("-\n");
+// 	while (i < stack->len)
+// 	{
+// 		ft_printf("%d\n", stack->arr[i]);
+// 		i++;
+// 	}
+// 	ft_printf("\n\n");
+// }
+
 int	main(int argc, char **argv)
 {
 	t_stack	a;
@@ -47,11 +62,11 @@ int	main(int argc, char **argv)
 	push(&a, &b);
 	push(&a, &b);
 	print_stacks(&a, &b);
-	ra(&a); //operation to be tested
+	rra(&a); //operation to be tested
 	print_stacks(&a, &b);
-	rb(&b);
+	rrb(&b);
 	print_stacks(&a, &b);
-	rr(&a, &b); //operation to be tested
+	rrr(&a, &b); //operation to be tested
 	print_stacks(&a, &b);
 	free(a.arr);
 	free(b.arr);
