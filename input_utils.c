@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   input_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/11 18:33:28 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/11 18:47:31 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,11 +125,3 @@ bool	init_stacks(t_stack *a, t_stack *b, char **args, int len)
 	}
 	return (1);
 }
-
-// int	main(void)
-// {
-// 	bool	is_valid;
-
-// 	is_valid = validate_num("");
-// 	ft_printf("input: %s\nis valid? %d\n");
-// }
