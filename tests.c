@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:30:32 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/09 13:59:41 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/11 18:35:08 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	print_stacks(t_stack *a, t_stack *b)
 	while (i < a->len || i < b->len)
 	{
 		if (i < a->len)
-		ft_printf("%d", a->arr[i]);
+			ft_printf("%d", a->arr[i]);
 		else
-		ft_putchar_fd(' ', 1);
+			ft_putchar_fd(' ', 1);
 		ft_printf(" | ");
 		if (i < b->len)
-		ft_printf("%d", b->arr[i]);
+			ft_printf("%d", b->arr[i]);
 		ft_putchar_fd('\n', 1);
 		i++;
 	}
@@ -56,19 +56,22 @@ int	main(int argc, char **argv)
 	t_stack	a;
 	t_stack	b;
 
-	if (!init_stacks(&a, &b, (argv + 1), (argc - 1)))
-		return (1);
-	push(&a, &b);
-	push(&a, &b);
-	push(&a, &b);
-	print_stacks(&a, &b);
-	rra(&a); //operation to be tested
-	print_stacks(&a, &b);
-	rrb(&b);
-	print_stacks(&a, &b);
-	rrr(&a, &b); //operation to be tested
-	print_stacks(&a, &b);
-	free(a.arr);
-	free(b.arr);
+	if (argc > 1)
+	{
+		if (!init_stacks(&a, &b, (argv + 1), arrlen(argv + 1)))
+			return (1);
+		push(&a, &b);
+		push(&a, &b);
+		push(&a, &b);
+		print_stacks(&a, &b);
+		rra(&a);
+		print_stacks(&a, &b);
+		rrb(&b);
+		print_stacks(&a, &b);
+		rrr(&a, &b);
+		print_stacks(&a, &b);
+		free(a.arr);
+		free(b.arr);
+	}
 	return (0);
 }
