@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/11 18:47:31 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/12 10:46:28 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,10 @@ static bool	parse_input(t_stack *a, char **args)
 {
 	int		i;
 	int		j;
-	int		len;
 	char	**current_args;
 
-	len = a->len;
 	i = 0;
-	while (len > 0)
+	while (i < a->len)
 	{
 		current_args = ft_split((const char *)(args[i]), ' ');
 		if (!current_args[0])
@@ -92,7 +90,6 @@ static bool	parse_input(t_stack *a, char **args)
 			a->arr[i] = ft_atoi(current_args[j]);
 			j++;
 			i++;
-			len--;
 		}
 	}
 	return (1);
