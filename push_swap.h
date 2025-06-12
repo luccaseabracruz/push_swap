@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/11 17:22:44 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/12 19:48:23 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ typedef struct s_stack
 	int		*arr;
 	int		len;
 }			t_stack;
+
+typedef struct moves
+{
+	int		a;
+	int		b;
+	bool	rev_a;
+	bool	rev_b;
+	int		total;
+}			t_moves;
 
 void	push(t_stack *from, t_stack *to);
 void	sa(t_stack *a);
