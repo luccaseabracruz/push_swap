@@ -7,10 +7,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/tests",
       "args": [
-        "1",
-        "2",
-        "3",
-        "4 5"
+        "5 2 7 1 6 3 9 4 8"
       ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
@@ -18,7 +15,7 @@
       "externalConsole": false,
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
-      "preLaunchTask": "build tests",
+      "preLaunchTask": "build main",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",

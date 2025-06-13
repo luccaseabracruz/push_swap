@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/12 19:48:23 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:15:32 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ typedef struct s_stack
 
 typedef struct moves
 {
-	int		a;
-	int		b;
+	int		ra;
+	int		rb;
+	int		rra;
+	int		rrb;
 	bool	rev_a;
 	bool	rev_b;
 	int		total;
@@ -41,6 +43,8 @@ void	rr(t_stack *a, t_stack *b);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
+void	sort_three(t_stack *a);
+void	push_swap(t_stack *a, t_stack * b);
 
 size_t	arrlen(char **args);
 bool	init_stacks(t_stack *a, t_stack *b, char **arr, int len);
