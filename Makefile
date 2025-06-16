@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:12:49 by lseabra-          #+#    #+#              #
-#    Updated: 2025/06/11 18:47:40 by lseabra-         ###   ########.fr        #
+#    Updated: 2025/06/16 18:52:07 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ RM = rm -f
 RMDIR = rm -rf
 
 NAME = push_swap.a
-SRCS = swap.c push.c rotate.c reverse_rotate.c input_utils.c
+SRCS = swap.c push.c rotate.c reverse_rotate.c input_utils.c sort_three.c \
+calc_moves.c push_swap.c retrieve_numbers.c \
+test_utils.c
 OBJS = $(addprefix $(BUILD_PATH)/, $(SRCS:.c=.o))
 BUILD_PATH = build
 FT_PRINTF_PATH = ft_printf
