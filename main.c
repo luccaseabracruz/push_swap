@@ -6,35 +6,13 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 15:09:14 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/13 17:59:39 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/16 19:06:29 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
 #include <stdlib.h>
-
-void	print_stacks(t_stack *a, t_stack *b)
-{
-	int	i;
-
-	i = 0;
-	ft_printf("A | B\n");
-	ft_printf("-----\n");
-	while (i < a->len || i < b->len)
-	{
-		if (i < a->len)
-			ft_printf("%d", a->arr[i]);
-		else
-			ft_printf(" ");
-		ft_printf(" | ");
-		if (i < b->len)
-			ft_printf("%d", b->arr[i]);
-		ft_printf("\n");
-		i++;
-	}
-	ft_printf("\n\n");
-}
 
 int	main(int argc, char **argv)
 {
@@ -45,7 +23,7 @@ int	main(int argc, char **argv)
 	{
 		if (!init_stacks(&a, &b, (argv + 1), arrlen(argv + 1)))
 			return (1);
-		print_stacks(&a, &b);
+		// print_stacks(&a, &b);
 		if (a.len == 1)
 			return (0);
 		else if (a.len == 2 && a.arr[0] > a.arr[1])
@@ -54,7 +32,7 @@ int	main(int argc, char **argv)
 			sort_three(&a);
 		else
 			push_swap(&a, &b);
-		print_stacks(&a, &b);
+		// print_stacks(&a, &b);
 		free(a.arr);
 		free(b.arr);
 	}

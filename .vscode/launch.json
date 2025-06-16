@@ -7,7 +7,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/tests",
       "args": [
-        "5 2 7 1 6 3 9 4 8"
+        "9 2 4 10 3 1 7 6 8 5"
       ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",

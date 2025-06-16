@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/13 16:15:32 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/16 18:51:26 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct moves
 	int		total;
 }			t_moves;
 
+bool	init_stacks(t_stack *a, t_stack *b, char **arr, int len);
 void	push(t_stack *from, t_stack *to);
 void	sa(t_stack *a);
 void	sb(t_stack *b);
@@ -43,10 +44,14 @@ void	rr(t_stack *a, t_stack *b);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
+t_moves	calc_moves(t_stack *a, t_stack *b, int pos);
+size_t	arrlen(char **args);
 void	sort_three(t_stack *a);
 void	push_swap(t_stack *a, t_stack * b);
+void 	retrieve_numbers(t_stack *a, t_stack *b);
 
-size_t	arrlen(char **args);
-bool	init_stacks(t_stack *a, t_stack *b, char **arr, int len);
+//Test functions
+void	print_stacks(t_stack *a, t_stack *b);
+void	print_stack(t_stack *stack);
 
 #endif

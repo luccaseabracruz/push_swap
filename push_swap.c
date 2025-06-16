@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 11:01:41 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/13 18:05:28 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/16 21:26:42 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,7 @@
 #include "ft_printf/libft/libft.h"
 #include <stdbool.h>
 
-void	opt_moves(t_moves *moves)
-{
-	if (moves->ra >= moves->rb)
-		moves->total = moves->ra + (moves->ra - moves->rb);
-	else
-		moves->total = moves->rb + (moves->rb - moves->ra);
-	if (moves->total > moves->ra + moves->rrb)
-	{
-		moves->total = moves->ra + moves->rrb;
-		moves->rev_b = 1;
-	}
-	if (moves->total > moves->rra + moves->rb)
-	{
-		moves->total = moves->rra + moves->rb;
-		moves->rev_a = 1;
-		moves->rev_b = 0;
-	}
-	if (moves->rra >= moves->rrb && moves->total > moves->rra + (moves->rra - moves->rrb))
-	{
-		moves->total = moves->rra + (moves->rra - moves->rrb);
-		moves->rev_a = 1;
-		moves->rev_b = 1;
-	}
-	if (moves->rrb >= moves->rra && moves->total > moves->rrb + (moves->rrb - moves->rra))
-	{
-			moves->total = moves->rrb + (moves->rrb - moves->rra);
-			moves->rev_a = 1;
-			moves->rev_b = 1;
-	}
-}
-
-t_moves	calc_moves(t_stack *a, t_stack *b, int pos)
-{
-	t_moves moves;
-
-	ft_memset(&moves, 0, sizeof(moves));
-	moves.ra = pos;
-	moves.rra = a->len - pos;
-	while((moves.rb <= b->len) && (a->arr[pos] < b->arr[moves.rb]))
-		moves.rb++;
-	moves.rrb = b->len - moves.rb;
-	if (moves.rrb == 0)
-		moves.rb = 0;
-	opt_moves(&moves);
-	return (moves);
-}
-
-void	exec_moves(t_stack *a, t_stack *b, t_moves *moves)
+static void	exec_moves(t_stack *a, t_stack *b, t_moves *moves)
 {
 	while ((!moves->rev_a && !moves->rev_b) && (moves->ra && moves->rb))
 	{
@@ -75,26 +28,47 @@ void	exec_moves(t_stack *a, t_stack *b, t_moves *moves)
 		moves->rra--;
 		moves->rrb--;
 	}
-	while (!moves->rev_a && moves->ra > 0)
+	while (!moves->rev_a && moves->ra)
 	{
 		ra(a);
 		moves->ra--;
 	}
-	while (!moves->rev_b && moves->rb > 0)
+	while (!moves->rev_b && moves->rb)
 	{
-		rb(a);
+		rb(b);
 		moves->rb--;
 	}
-	while (moves->rev_a && moves->rra > 0)
+	while (moves->rev_a && moves->rra)
 	{
 		rra(a);
 		moves->rra--;
 	}
-	while (moves->rev_b && moves->rrb > 0)
+	while (moves->rev_b && moves->rrb)
 	{
-		rrb(a);
+		rrb(b);
 		moves->rrb--;
 	}
+}
+
+static void	smaller_to_top(t_stack *a)
+{
+	int	i;
+	int	smaller_pos;
+
+	i = 0;
+	smaller_pos = 0;
+	while (i < a->len)
+	{
+		if (a->arr[i] < a->arr[smaller_pos])
+			smaller_pos = i;
+		i++;
+	}
+	if (smaller_pos <= a->len / 2)
+		while (smaller_pos-- > 0)
+			ra(a);
+	else
+		while (smaller_pos++ < a->len)
+			rra(a);
 }
 
 void	push_swap(t_stack *a, t_stack * b)
@@ -108,7 +82,7 @@ void	push_swap(t_stack *a, t_stack * b)
 	while (a->len > 3)
 	{
 		moves = calc_moves(a, b, 0);
-		i = 0;
+		i = 1;
 		while (i < a->len)
 		{
 			current_moves = calc_moves(a, b, i);
@@ -120,4 +94,6 @@ void	push_swap(t_stack *a, t_stack * b)
 		push(a, b);
 	}
 	sort_three(a);
+	retrieve_numbers(a, b);
+	smaller_to_top(a);
 }
