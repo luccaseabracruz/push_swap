@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.c                                            :+:      :+:    :+:   */
+/*   test_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/29 15:30:32 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/11 18:35:08 by lseabra-         ###   ########.fr       */
+/*   Created: 2025/06/16 17:53:39 by lseabra-          #+#    #+#             */
+/*   Updated: 2025/06/16 18:09:24 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
-#include "ft_printf/libft/libft.h"
+
+void	print_stack(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("A\n");
+	ft_printf("-\n");
+	while (i < stack->len)
+	{
+		ft_printf("%d\n", stack->arr[i]);
+		i++;
+	}
+	ft_printf("\n\n");
+}
 
 void	print_stacks(t_stack *a, t_stack *b)
 {
@@ -26,52 +40,12 @@ void	print_stacks(t_stack *a, t_stack *b)
 		if (i < a->len)
 			ft_printf("%d", a->arr[i]);
 		else
-			ft_putchar_fd(' ', 1);
+			ft_printf(" ");
 		ft_printf(" | ");
 		if (i < b->len)
 			ft_printf("%d", b->arr[i]);
-		ft_putchar_fd('\n', 1);
+		ft_printf("\n");
 		i++;
 	}
 	ft_printf("\n\n");
-}
-
-// static void	print_stack(t_stack *stack)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	ft_printf("A\n");
-// 	ft_printf("-\n");
-// 	while (i < stack->len)
-// 	{
-// 		ft_printf("%d\n", stack->arr[i]);
-// 		i++;
-// 	}
-// 	ft_printf("\n\n");
-// }
-
-int	main(int argc, char **argv)
-{
-	t_stack	a;
-	t_stack	b;
-
-	if (argc > 1)
-	{
-		if (!init_stacks(&a, &b, (argv + 1), arrlen(argv + 1)))
-			return (1);
-		push(&a, &b);
-		push(&a, &b);
-		push(&a, &b);
-		print_stacks(&a, &b);
-		rra(&a);
-		print_stacks(&a, &b);
-		rrb(&b);
-		print_stacks(&a, &b);
-		rrr(&a, &b);
-		print_stacks(&a, &b);
-		free(a.arr);
-		free(b.arr);
-	}
-	return (0);
 }
