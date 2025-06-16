@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/16 18:51:26 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/16 22:38:31 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	rrr(t_stack *a, t_stack *b);
 t_moves	calc_moves(t_stack *a, t_stack *b, int pos);
 size_t	arrlen(char **args);
 void	sort_three(t_stack *a);
-void	push_swap(t_stack *a, t_stack * b);
-void 	retrieve_numbers(t_stack *a, t_stack *b);
+void	push_swap(t_stack *a, t_stack *b);
+void	retrieve_numbers(t_stack *a, t_stack *b);
 
 //Test functions
 void	print_stacks(t_stack *a, t_stack *b);

@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 18:24:14 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/16 20:27:13 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/16 22:41:42 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ static int	find_best_pos(int n, t_stack *stack)
 	return (best_pos);
 }
 
-void retrieve_numbers(t_stack *a, t_stack *b)
+void	retrieve_numbers(t_stack *a, t_stack *b)
 {
 	int	best_pos;
 	int	i;
-	
+
 	while (b->len > 0)
 	{
 		best_pos = find_best_pos(b->arr[0], a);

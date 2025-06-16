@@ -6,42 +6,55 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:19:56 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/16 19:51:24 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/16 22:33:44 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf/libft/libft.h"
 
+static void	opt_rr(t_moves *moves)
+{
+	int	cost;
+
+	cost = moves->rrb + (moves->rra - moves->rrb);
+	if (moves->rra >= moves->rrb && moves->total > cost)
+	{
+		moves->total = cost;
+		moves->rev_a = 1;
+		moves->rev_b = 1;
+	}
+	cost = moves->rra + (moves->rrb - moves->rra);
+	if (moves->rrb >= moves->rra && moves->total > cost)
+	{
+		moves->total = cost;
+		moves->rev_a = 1;
+		moves->rev_b = 1;
+	}
+}
+
 static void	opt_moves(t_moves *moves)
 {
+	int	cost;
+
 	if (moves->ra >= moves->rb)
 		moves->total = moves->rb + (moves->ra - moves->rb);
 	else
 		moves->total = moves->ra + (moves->rb - moves->ra);
-	if (moves->total > moves->ra + moves->rrb)
+	cost = moves->ra + moves->rrb;
+	if (moves->total > cost)
 	{
-		moves->total = moves->ra + moves->rrb;
+		moves->total = cost;
 		moves->rev_b = 1;
 	}
-	if (moves->total > moves->rra + moves->rb)
+	cost = moves->rra + moves->rb;
+	if (moves->total > cost)
 	{
-		moves->total = moves->rra + moves->rb;
+		moves->total = cost;
 		moves->rev_a = 1;
 		moves->rev_b = 0;
 	}
-	if (moves->rra >= moves->rrb && moves->total > moves->rrb + (moves->rra - moves->rrb))
-	{
-		moves->total = moves->rrb + (moves->rra - moves->rrb);
-		moves->rev_a = 1;
-		moves->rev_b = 1;
-	}
-	if (moves->rrb >= moves->rra && moves->total > moves->rra + (moves->rrb - moves->rra))
-	{
-			moves->total = moves->rra + (moves->rrb - moves->rra);
-			moves->rev_a = 1;
-			moves->rev_b = 1;
-	}
+	opt_rr(moves);
 }
 
 static int	find_best_pos(int n, t_stack *stack)
@@ -70,7 +83,7 @@ static int	find_best_pos(int n, t_stack *stack)
 
 t_moves	calc_moves(t_stack *a, t_stack *b, int pos)
 {
-	t_moves moves;
+	t_moves	moves;
 
 	ft_memset(&moves, 0, sizeof(moves));
 	moves.ra = pos;
@@ -80,22 +93,3 @@ t_moves	calc_moves(t_stack *a, t_stack *b, int pos)
 	opt_moves(&moves);
 	return (moves);
 }
-
-// #include "ft_printf/ft_printf.h"
-// int	main(int argc, char **argv)
-// {
-// 	t_stack a;
-// 	t_stack b;
-// 	int	best_pos;
-
-// 	if (argc > 1)
-// 	{
-// 		if (!init_stacks(&a, &b, (argv + 1), arrlen(argv + 1)))
-// 			return (1);
-// 		push(&a, &b);
-// 		push(&a, &b);
-// 		print_stacks(&a, &b);
-// 		best_pos = find_best_pos(a.arr[0], &b);
-// 		ft_printf("best position for %d is %s[%d]\n", a.arr[0], b.name, best_pos);
-// 	}
-// }

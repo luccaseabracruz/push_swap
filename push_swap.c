@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 11:01:41 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/16 21:26:42 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/16 22:36:43 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ft_printf/libft/libft.h"
 #include <stdbool.h>
 
-static void	exec_moves(t_stack *a, t_stack *b, t_moves *moves)
+static void	exec_combined(t_stack *a, t_stack *b, t_moves *moves)
 {
 	while ((!moves->rev_a && !moves->rev_b) && (moves->ra && moves->rb))
 	{
@@ -28,6 +28,11 @@ static void	exec_moves(t_stack *a, t_stack *b, t_moves *moves)
 		moves->rra--;
 		moves->rrb--;
 	}
+}
+
+static void	exec_moves(t_stack *a, t_stack *b, t_moves *moves)
+{
+	exec_combined(a, b, moves);
 	while (!moves->rev_a && moves->ra)
 	{
 		ra(a);
@@ -71,7 +76,7 @@ static void	smaller_to_top(t_stack *a)
 			rra(a);
 }
 
-void	push_swap(t_stack *a, t_stack * b)
+void	push_swap(t_stack *a, t_stack *b)
 {
 	t_moves	moves;
 	t_moves	current_moves;
