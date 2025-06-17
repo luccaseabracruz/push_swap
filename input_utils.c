@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/12 10:46:28 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/17 14:22:41 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ size_t	arrlen(char **args)
 	return (len);
 }
 
-static bool	validate_num(char *num)
+static bool	validate_num(char *num, t_stack *a)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	if ((num[i] == '-' || num[i] == '+'))
@@ -65,6 +66,13 @@ static bool	validate_num(char *num)
 	{
 		if (!ft_isdigit(num[i]))
 			return (0);
+		j = 0;
+		while (j < a->len)
+		{
+			if (ft_atoi(num) == a->arr[j])
+				return (0);
+			j++;
+		}
 		i++;
 	}
 	return (1);
@@ -85,7 +93,7 @@ static bool	parse_input(t_stack *a, char **args)
 		j = 0;
 		while (current_args[j])
 		{
-			if (!validate_num(current_args[j]))
+			if (!validate_num(current_args[j], a))
 				return (0);
 			a->arr[i] = ft_atoi(current_args[j]);
 			j++;

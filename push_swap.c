@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 11:01:41 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/16 22:36:43 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/17 14:41:30 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,25 @@
 #include "ft_printf/libft/libft.h"
 #include <stdbool.h>
 
-static void	exec_combined(t_stack *a, t_stack *b, t_moves *moves)
+static t_moves	find_cheapest(t_stack *a, t_stack *b)
+{
+	t_moves	moves;
+	t_moves	current_moves;
+	int		i;
+
+	moves = calc_moves(a, b, 0);
+	i = 1;
+	while (i < a->len)
+	{
+		current_moves = calc_moves(a, b, i);
+		if (moves.total > current_moves.total)
+			moves = current_moves;
+		i++;
+	}
+	return (moves);
+}
+
+static void	exec_reverse(t_stack *a, t_stack *b, t_moves *moves)
 {
 	while ((!moves->rev_a && !moves->rev_b) && (moves->ra && moves->rb))
 	{
@@ -32,7 +50,7 @@ static void	exec_combined(t_stack *a, t_stack *b, t_moves *moves)
 
 static void	exec_moves(t_stack *a, t_stack *b, t_moves *moves)
 {
-	exec_combined(a, b, moves);
+	exec_reverse(a, b, moves);
 	while (!moves->rev_a && moves->ra)
 	{
 		ra(a);
@@ -79,22 +97,12 @@ static void	smaller_to_top(t_stack *a)
 void	push_swap(t_stack *a, t_stack *b)
 {
 	t_moves	moves;
-	t_moves	current_moves;
-	int		i;
 
 	push(a, b);
 	push(a, b);
 	while (a->len > 3)
 	{
-		moves = calc_moves(a, b, 0);
-		i = 1;
-		while (i < a->len)
-		{
-			current_moves = calc_moves(a, b, i);
-			if (moves.total > current_moves.total)
-				moves = current_moves;
-			i++;
-		}
+		moves = find_cheapest(a, b);
 		exec_moves(a, b, &moves);
 		push(a, b);
 	}
