@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+	  {
+		"label": "build main_bonus",
+		"type": "shell",
+		"command": "gcc",
+		"args": [
+		  "-g",
+		  "*.c",
+		  "-o",
+		  "tests"
+		],
+		"group": {
+		  "kind": "build",
+		  "isDefault": true
+		},
+		"problemMatcher": ["$gcc"]
+	  }
+	]
+  }

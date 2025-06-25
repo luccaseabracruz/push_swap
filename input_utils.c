@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/25 16:51:25 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 18:33:09 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static size_t	count_args(char const *s)
 	size_t	counter;
 	size_t	i;
 
+	if (!s[0])
+		return (1);
 	counter = 0;
 	i = 0;
 	while (s[i] == ' ' && s[i])
@@ -100,9 +102,11 @@ static bool	parse_input(t_stack *a, char **args)
 			if (!validate_num(current_args[j], a))
 				return (0);
 			a->arr[i] = ft_atol(current_args[j]);
+			free(current_args[j]);
 			j++;
 			i++;
 		}
+		free(current_args);
 	}
 	return (1);
 }
