@@ -14,6 +14,7 @@
 #include "ft_printf/ft_printf.h"
 #include "ft_printf/libft/libft.h"
 #include <stdbool.h>
+#include <limits.h>
 
 static size_t	count_args(char const *s)
 {
@@ -52,27 +53,30 @@ size_t	arrlen(char **args)
 	return (len);
 }
 
-static bool	validate_num(char *num, t_stack *a)
+static bool	validate_num(char *str_num, t_stack *a)
 {
-	int	i;
-	int	j;
+	int		i;
+	long	num;
 
 	i = 0;
-	if ((num[i] == '-' || num[i] == '+'))
+	if ((str_num[i] == '-' || str_num[i] == '+'))
 		i++;
-	if (!num[i])
+	if (!str_num[i])
 		return (0);
-	while (num[i])
+	while (str_num[i])
 	{
-		if (!ft_isdigit(num[i]))
+		if (!ft_isdigit(str_num[i]))
 			return (0);
-		j = 0;
-		while (j < a->len)
-		{
-			if (ft_atoi(num) == a->arr[j])
-				return (0);
-			j++;
-		}
+		i++;
+	}
+	num = (long)ft_atol(str_num);
+	if (num < INT_MIN || num > INT_MAX)
+		return (0);
+	i = 0;
+	while (i < a->len)
+	{
+		if (num == a->arr[i])
+			return (0);
 		i++;
 	}
 	return (1);
@@ -95,7 +99,7 @@ static bool	parse_input(t_stack *a, char **args)
 		{
 			if (!validate_num(current_args[j], a))
 				return (0);
-			a->arr[i] = ft_atoi(current_args[j]);
+			a->arr[i] = ft_atol(current_args[j]);
 			j++;
 			i++;
 		}
@@ -105,10 +109,12 @@ static bool	parse_input(t_stack *a, char **args)
 
 bool	init_stacks(t_stack *a, t_stack *b, char **args, int len)
 {
-	a->arr = (int *)ft_calloc((size_t)len, sizeof(int));
+	int	i;
+
+	a->arr = (long *)ft_calloc((size_t)len, sizeof(long));
 	if (!a->arr)
 		return (0);
-	b->arr = (int *)ft_calloc((size_t)len, sizeof(int));
+	b->arr = (long *)ft_calloc((size_t)len, sizeof(long));
 	if (!b->arr)
 	{
 		free(a->arr);

@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/16 22:38:31 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/17 19:39:16 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef struct s_stack
 {
 	char	*name;
-	int		*arr;
+	long	*arr;
 	int		len;
 }			t_stack;
 
