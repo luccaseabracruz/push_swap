@@ -6,13 +6,13 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:02:46 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/24 19:03:01 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:10:40 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "get_next_line_bonus.h"
-#include "ft_printf/libft/libft.h"
+#include "libft.h"
 #include <stdbool.h>
 #include <stdlib.h>
 

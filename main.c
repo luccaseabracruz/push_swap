@@ -6,12 +6,12 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 15:09:14 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/24 18:31:31 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:34:11 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf/ft_printf.h"
+
 #include <stdlib.h>
 
 // int	main(int argc, char **argv)

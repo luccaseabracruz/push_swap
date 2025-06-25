@@ -6,14 +6,14 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 18:29:37 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/29 18:07:10 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:29:31 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf/ft_printf.h"
+#include "libft.h"
 
-static void	swap(t_stack *stack)
+void	swap(t_stack *stack)
 {
 	int	temp;
 
@@ -28,20 +28,20 @@ static void	swap(t_stack *stack)
 void	sa(t_stack *a)
 {
 	swap(a);
-	ft_printf("sa\n");
+	ft_putstr_fd("sa\n", 1);
 }
 
 void	sb(t_stack *b)
 {
 	swap(b);
-	ft_printf("sb\n");
+	ft_putstr_fd("sb\n", 1);
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
 	swap(a);
 	swap(b);
-	ft_printf("ss\n");
+	ft_putstr_fd("ss\n", 1);
 }
 
 // #include <stdio.h>

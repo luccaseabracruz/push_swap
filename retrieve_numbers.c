@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 18:24:14 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/16 22:41:42 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:25:21 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ void	retrieve_numbers(t_stack *a, t_stack *b)
 			while (i++ < a->len - best_pos)
 				rra(a);
 		}
-		push(b, a);
+		pa(a, b);
 	}
 }

@@ -6,13 +6,12 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/24 17:07:17 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:29:10 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf/ft_printf.h"
-#include "ft_printf/libft/libft.h"
+#include "libft.h"
 #include <stdbool.h>
 #include <limits.h>
 
@@ -128,7 +127,7 @@ bool	init_stacks(t_stack *a, t_stack *b, char **args, int len)
 	{
 		free(a->arr);
 		free(b->arr);
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 1);
 		return (0);
 	}
 	return (1);

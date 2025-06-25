@@ -6,13 +6,12 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:58:18 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/09 14:02:58 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:30:13 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf/ft_printf.h"
-#include "ft_printf/libft/libft.h"
+#include "libft.h"
 #include <stddef.h>
 
 void	push(t_stack *from, t_stack *to)
@@ -38,5 +37,16 @@ void	push(t_stack *from, t_stack *to)
 		i--;
 	}
 	to->arr[0] = value;
-	ft_printf("p%s\n", to->name);
+}
+
+void	pa(t_stack *a, t_stack *b)
+{
+	push(b, a);
+	ft_putstr_fd("pa\n", 1);
+}
+
+void	pb(t_stack *a, t_stack *b)
+{
+	push(a, b);
+	ft_putstr_fd("pb\n", 1);
 }

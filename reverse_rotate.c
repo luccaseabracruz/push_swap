@@ -6,14 +6,14 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 13:06:58 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/09 14:06:49 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:26:38 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf/ft_printf.h"
+#include "libft.h"
 
-static void	reverse_rotate(t_stack *stack)
+void	reverse_rotate(t_stack *stack)
 {
 	int	temp;
 	int	i;
@@ -28,18 +28,18 @@ static void	reverse_rotate(t_stack *stack)
 void	rra(t_stack *a)
 {
 	reverse_rotate(a);
-	ft_printf("rra\n");
+	ft_putstr_fd("rra\n", 1);
 }
 
 void	rrb(t_stack *b)
 {
 	reverse_rotate(b);
-	ft_printf("rrb\n");
+	ft_putstr_fd("rrb\n", 1);
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	ft_printf("rrr\n");
+	ft_putstr_fd("rrr\n", 1);
 }

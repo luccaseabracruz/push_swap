@@ -6,12 +6,11 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:19:56 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/16 22:33:44 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:09:55 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf/libft/libft.h"
 
 static void	opt_rr(t_moves *moves)
 {

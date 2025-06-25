@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:12:49 by lseabra-          #+#    #+#              #
-#    Updated: 2025/06/24 18:28:15 by lseabra-         ###   ########.fr        #
+#    Updated: 2025/06/25 13:41:16 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ MAIN = main.c
 NAME = push_swap
 LIB_NAME = $(NAME).a
 
-SRCS =  swap.c \
+SRCS =	swap.c \
 		push.c \
 		rotate.c \
 		reverse_rotate.c \
@@ -34,15 +34,21 @@ SRCS =  swap.c \
 		sort_three.c \
 		calc_moves.c \
 		push_swap.c \
-		retrieve_numbers.c
+		retrieve_numbers.c \
+		ft_atol.c
 OBJS = $(addprefix $(BUILD_PATH)/, $(SRCS:.c=.o))
 BUILD_PATH = build
-FT_PRINTF_PATH = ft_printf
-FT_PRINTF_NAME = libftprintf.a
 
 #LIBFT
-LIBFT_SRCS =  
-LIBFT_OBJS = $(addprefix $(BUILD_PATH)/, $(LIBFT_SRCS:.c=.o))
+SRCS_LIBFT =	ft_bzero.c \
+				ft_calloc.c \
+				ft_isdigit.c \
+				ft_memset.c \
+				ft_putstr_fd.c \
+				ft_split.c \
+				ft_strlen.c \
+				ft_strncmp.c \
+OBJS_LIBFT = $(addprefix $(BUILD_PATH)/, $(SRCS_LIBFT:.c=.o))
 #GET_NEXT_LINE
 SRCS_GNL =  get_next_line_bonus.c \
 			get_next_line_utils_bonus.c
@@ -66,11 +72,8 @@ all: $(NAME)
 $(NAME): $(LIB_NAME)
 	$(CC) $(CFLAGS) $(MAIN) $(LIB_NAME) -o $(NAME)
 
-$(LIB_NAME): $(OBJS) $(LIBFT_OBJS)
-	make -C $(FT_PRINTF_PATH) all
-	cp $(FT_PRINTF_PATH)/$(FT_PRINTF_NAME) .
-	mv $(FT_PRINTF_NAME) $(LIB_NAME)
-	$(AR) $(LIB_NAME) $(OBJS)
+$(LIB_NAME): $(OBJS) $(OBJS_LIBFT)
+	$(AR) $(LIB_NAME) $(OBJS) $(OBJ)
 
 $(BUILD_PATH)/%.o: %.c | $(BUILD_PATH)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -80,14 +83,12 @@ $(BUILD_PATH):
 
 clean:
 	$(RMDIR) $(BUILD_PATH)
-	make -C $(FT_PRINTF_PATH) clean
 
 fclean: clean
 	$(RM) $(NAME)
 	$(RM) $(LIB_NAME)
 	$(RM) $(NAME_BONUS)
 	$(RM) .bonus
-	make -C $(FT_PRINTF_PATH) fclean
 
 re: fclean all
 
