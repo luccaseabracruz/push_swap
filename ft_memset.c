@@ -6,11 +6,11 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:01:03 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/04/18 14:03:43 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:37:25 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
 
 /**
  * ft_memset - Fills a block of memory with a specified value.
@@ -34,13 +34,3 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
-/*
-int	main(void)
-{
-	int s[] = {'2', '7', '4', '\0'};
-	char c = 'c';
-	size_t n = 3;
-	
-	printf("s: %s\nc: %c\nn: %zd\n	new s: %s", s, c, ft_memset(s, c, n), s);
-}
-*/

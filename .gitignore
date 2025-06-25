@@ -3,6 +3,7 @@ build
 .bonus
 tests
 push_swap
+checker
 
 # Prerequisites
 *.d

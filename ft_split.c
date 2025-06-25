@@ -6,11 +6,13 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 19:16:47 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/04/18 14:19:59 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:55:14 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
+#include <stddef.h>
 
 /**
  * count_words - Counts the number of words in a string based on a delimiter.
@@ -140,30 +142,3 @@ char	**ft_split(char const *s, char c)
 		arr[word_count] = NULL;
 	return (arr);
 }
-
-/*int	main(void)
-{
-	int		i;
-	char	*s;
-	char	c;
-	char	**arr;
-	
-	s = "hello my friend!";
-	c = ' ';
-	printf("str: %s\n", s);
-	printf("word count: %zu\n", count_words(s, c));
-	arr = ft_split(s, c);
-	i = 0;
-	while (arr[i])
-	{
-		printf("p[%d] = %s\n", i, arr[i]);
-		i++;
-	}
-	printf("p[%d] = %s\n", i, arr[i]);
-	while (i >= 0)
-	{
-		free(arr[i]);
-		i--;
-	}
-	free(arr);
-}*/

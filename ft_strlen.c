@@ -6,11 +6,11 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:54:45 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/04/18 14:42:36 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:38:44 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
 
 /**
  * ft_strlen - Calculates the length of a null-terminated string.
@@ -30,9 +30,3 @@ size_t	ft_strlen(const char *s)
 	}
 	return (i);
 }
-
-/*int	main(void)
-{
-	char str[] = "Lucca";
-	printf("str: %s\nlength: %zu\n", str, ft_strlen(str));
-}*/

@@ -6,12 +6,11 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 11:01:41 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/25 15:23:56 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:45:32 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
 #include <stdbool.h>
 
 static t_moves	find_cheapest(t_stack *a, t_stack *b)

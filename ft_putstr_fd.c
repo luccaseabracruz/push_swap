@@ -6,11 +6,11 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 18:13:46 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/25 13:32:21 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:37:48 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 /**
  * ft_putchar_fd - Outputs the character 'c' to the given file descriptor.

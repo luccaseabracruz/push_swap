@@ -6,13 +6,12 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:58:18 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/25 15:30:13 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:56:28 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
-#include <stddef.h>
 
 void	push(t_stack *from, t_stack *to)
 {

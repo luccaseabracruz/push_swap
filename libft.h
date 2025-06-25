@@ -6,21 +6,14 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:41:17 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/25 15:21:42 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:46:21 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
-# include <limits.h>
-# include <stdint.h>
-# include <fcntl.h>
-
-# include <stdio.h>
+# include <stddef.h>
 
 int		ft_isdigit(int c);
 size_t	ft_strlen(const char *s);

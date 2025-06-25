@@ -6,11 +6,11 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:53:15 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/04/18 14:46:48 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:36:36 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
 
 /**
  * ft_strncmp - Compares up to n characters of two strings. 
@@ -46,23 +46,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
-
-/*int	main(void)
-{
-	char	*s1 = "BC";
-	char	*s2 = "AB";
-	size_t	n = 10;
-
-	if (ft_strncmp(s1, s2, n) == strncmp(s1, s2, n))
-		printf
-		(
-			"Same behavior\ns1: %s\ns2: %s\norgn res: %d\nmy res: %d\n"
-			, s1, s2, strncmp(s1, s2, n), ft_strncmp(s1, s2, n)
-		);
-	else
-		printf
-		(
-			"Something is wrong\ns1: %s\ns2: %s\norgn res: %d\nmy res: %d\n"
-			, s1, s2, strncmp(s1, s2, n), ft_strncmp(s1, s2, n)
-		);
-}*/

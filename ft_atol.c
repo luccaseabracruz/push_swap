@@ -6,9 +6,11 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 12:55:56 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/25 13:12:34 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:54:10 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 /**
  * @brief Converts a string to an long.
@@ -22,9 +24,6 @@
  * @param nptr Pointer to the null-terminated string to be converted.
  * @return The converted long value.
  */
-
-#include "libft.h"
-
 long	ft_atol(const char *nptr)
 {
 	long	res;
@@ -49,21 +48,3 @@ long	ft_atol(const char *nptr)
 	}
 	return (sign * res);
 }
-/* 
-int	main(int argc, char ** argv)
-{
-	int	o;
-	int	m;
-	if (argc > 1)
-	{
-		o = atoi(argv[1]);
-		m = atoi(argv[1]);
-		if (o == m)
-			printf("SAME RESULT\n");
-		else
-			printf("SOMETHING IS WRONG WITH FT_ATOI\n");
-		printf("original: %d\n", o);
-		printf("my atoi:  %d\n", m);
-	}
-}
- */

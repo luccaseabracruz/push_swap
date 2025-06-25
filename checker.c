@@ -6,40 +6,49 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:02:46 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/25 13:10:40 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 16:51:23 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "get_next_line_bonus.h"
 #include "libft.h"
+#include "get_next_line_bonus.h"
 #include <stdbool.h>
 #include <stdlib.h>
 
+static bool	compare_input(char *input, char *operation)
+{
+	if (!ft_strncmp((const char *)input, (const char *)operation, ft_strlen(input)))
+		return (1);
+	else
+		return (0);
+}
+
 static void	exec_single_move(t_stack *a, t_stack *b, char *move)
 {
-	if (!ft_strncmp((const char *)move, "pa\n", ft_strlen(move)))
+	if (compare_input(move, "pa\n"))
 		push(b, a);
-	else if (!ft_strncmp((const char *)move, "pb\n", ft_strlen(move)))
+	else if (compare_input(move, "pb\n"))
 		push(a, b);
-	else if (!ft_strncmp((const char *)move, "sa\n", ft_strlen(move)))
-		sa(a);
-	else if (!ft_strncmp((const char *)move, "sb\n", ft_strlen(move)))
-		sb(b);
-	else if (!ft_strncmp((const char *)move, "ss\n", ft_strlen(move)))
-		ss(a, b);
-	else if (!ft_strncmp((const char *)move, "ra\n", ft_strlen(move)))
-		ra(a);
-	else if (!ft_strncmp((const char *)move, "rb\n", ft_strlen(move)))
-		rb(b);
-	else if (!ft_strncmp((const char *)move, "rr\n", ft_strlen(move)))
-		rr(a, b);
-	else if (!ft_strncmp((const char *)move, "rra\n", ft_strlen(move)))
-		rra(a);
-	else if (!ft_strncmp((const char *)move, "rrb\n", ft_strlen(move)))
-		rrb(b);
-	else if (!ft_strncmp((const char *)move, "rrr\n", ft_strlen(move)))
-		rrr(a, b);
+	else if (compare_input(move, "sa\n") || compare_input(move, "ss\n"))
+		swap(a);
+	else if (compare_input(move, "sb\n") || compare_input(move, "ss\n"))
+		swap(b);
+	else if (compare_input(move, "ra\n") || compare_input(move, "rr\n"))
+		rotate(a);
+	else if (compare_input(move, "rb\n") || compare_input(move, "rr\n"))
+		rotate(b);
+	else if (compare_input(move, "rra\n") || compare_input(move, "rrr\n"))
+		reverse_rotate(a);
+	else if (compare_input(move, "rrb\n") || compare_input(move, "rrr\n"))
+		reverse_rotate(b);
+	else
+	{
+		ft_putstr_fd("Error\n", 1);
+		free(a->arr);
+		free(b->arr);
+		exit(0);
+	}
 }
 
 static void	exec_all_moves(t_stack *a, t_stack *b)
@@ -52,7 +61,7 @@ static void	exec_all_moves(t_stack *a, t_stack *b)
 		if (!ft_strncmp((const char *)move, "Error\n", ft_strlen(move)))
 		{
 			free(move);
-			exit(1) ;
+			exit(0) ;
 		}
 		exec_single_move(a, b, move);
 		move = get_next_line(0);
@@ -80,7 +89,7 @@ void	checker(t_stack *a, t_stack *b)
 {
 	exec_all_moves(a, b);
 	if (verify_stacks(a, b))
-		ft_putstr_fd("OK", 1);
+		ft_putstr_fd("OK\n", 1);
 	else
-		ft_putstr_fd("KO", 1);
+		ft_putstr_fd("KO\n", 1);
 }

@@ -6,13 +6,14 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/25 15:29:10 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 16:51:25 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 #include <stdbool.h>
+#include <stdlib.h>
 #include <limits.h>
 
 static size_t	count_args(char const *s)
@@ -108,8 +109,6 @@ static bool	parse_input(t_stack *a, char **args)
 
 bool	init_stacks(t_stack *a, t_stack *b, char **args, int len)
 {
-	int	i;
-
 	a->arr = (long *)ft_calloc((size_t)len, sizeof(long));
 	if (!a->arr)
 		return (0);
