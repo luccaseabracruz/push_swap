@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/17 19:48:38 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/24 17:07:17 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,6 @@ bool	init_stacks(t_stack *a, t_stack *b, char **args, int len)
 	b->len = 0;
 	a->name = "a";
 	b->name = "b";
-	i = 0;
 	if (!parse_input(a, args))
 	{
 		free(a->arr);
