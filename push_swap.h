@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/25 15:47:20 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/26 15:05:25 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ size_t	arrlen(char **args);
 void	sort_three(t_stack *a);
 void	push_swap(t_stack *a, t_stack *b);
 void	retrieve_numbers(t_stack *a, t_stack *b);
-
+void	free_strarr(char **arr);
 
 //Test functions
 void	print_stacks(t_stack *a, t_stack *b);

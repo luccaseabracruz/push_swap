@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:12:49 by lseabra-          #+#    #+#              #
-#    Updated: 2025/06/25 16:02:15 by lseabra-         ###   ########.fr        #
+#    Updated: 2025/06/26 15:19:52 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,8 @@ SRCS_LIBFT =	ft_bzero.c \
 				ft_putstr_fd.c \
 				ft_split.c \
 				ft_strlen.c \
-				ft_strncmp.c
+				ft_strncmp.c \
+				error_utils.c
 OBJS_LIBFT = $(addprefix $(BUILD_PATH)/, $(SRCS_LIBFT:.c=.o))
 #GET_NEXT_LINE
 SRCS_GNL =  get_next_line_bonus.c \
