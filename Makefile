@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:12:49 by lseabra-          #+#    #+#              #
-#    Updated: 2025/06/26 15:57:28 by lseabra-         ###   ########.fr        #
+#    Updated: 2025/06/26 16:30:14 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ OBJS_BONUS = $(addprefix $(BUILD_PATH)/, $(SRCS_BONUS:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(LIB_NAME)
+$(NAME): $(MAIN) $(LIB_NAME)
 	$(CC) $(CFLAGS) $(MAIN) $(LIB_NAME) -o $(NAME)
 
 $(LIB_NAME): $(OBJS_LIBFT) $(OBJS)
@@ -98,6 +98,6 @@ bonus: $(BONUS_MARK)
 $(BONUS_MARK): $(NAME_BONUS)
 	$(TCH) $(BONUS_MARK)
 
-$(NAME_BONUS): $(LIB_NAME) $(OBJS_BONUS) $(OBJS_GNL)
+$(NAME_BONUS): $(MAIN_BONUS) $(LIB_NAME) $(OBJS_BONUS) $(OBJS_GNL)
 	$(AR) $(LIB_NAME) $(OBJS_BONUS) $(OBJS_GNL)
 	$(CC) $(CFLAGS) $(MAIN_BONUS) $(LIB_NAME) -o $(NAME_BONUS)
