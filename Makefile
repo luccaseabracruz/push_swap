@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:12:49 by lseabra-          #+#    #+#              #
-#    Updated: 2025/06/26 15:19:52 by lseabra-         ###   ########.fr        #
+#    Updated: 2025/06/26 15:57:28 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,8 +51,8 @@ SRCS_LIBFT =	ft_bzero.c \
 				error_utils.c
 OBJS_LIBFT = $(addprefix $(BUILD_PATH)/, $(SRCS_LIBFT:.c=.o))
 #GET_NEXT_LINE
-SRCS_GNL =  get_next_line_bonus.c \
-			get_next_line_utils_bonus.c
+SRCS_GNL =  get_next_line.c \
+			get_next_line_utils.c
 OBJS_GNL = $(addprefix $(BUILD_PATH)/, $(SRCS_GNL:.c=.o))
 #BONUS
 NAME_BONUS = checker
