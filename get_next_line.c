@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:39:08 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/26 15:55:53 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 13:50:43 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,31 @@
  * @function get_next_line
  * @brief Reads the next line from a file descriptor.
  *
- * The `get_next_line` function reads a single line from the given file descriptor
- * (`fd`). It uses a static buffer to store leftover data between calls and reads
- * the file in chunks of size `BUFFER_SIZE`. The function dynamically allocates
- * memory for the returned line, which must be freed by the caller.
+ * Reads a single line from the given file descriptor (`fd`). Uses a static
+ * buffer to store leftover data between calls and reads the file in chunks of
+ * size `BUFFER_SIZE`. The returned line is dynamically allocated and must be
+ * freed by the caller.
  *
- * @param fd The file descriptor to read from. Must be a valid, open file descriptor.
- * @return A pointer to a dynamically allocated string containing the next line,
- *         including the newline character (`\n`) if present. Returns `NULL` if:
+ * @param fd File descriptor to read from. Must be valid and open.
+ * @return Pointer to a string containing the next line, including the newline
+ *         character (`\n`) if present. Returns NULL if:
  *         - The file descriptor is invalid.
- *         - `BUFFER_SIZE` is less than or equal to 0.
+ *         - `BUFFER_SIZE` is <= 0.
  *         - An error occurs during reading.
- *         - The end of the file is reached and no content is left to return.
+ *         - End of file is reached and no content is left.
  *
- * @details
- * - The function maintains a static buffer to store leftover data between calls.
- * - It reads from the file descriptor in chunks of size `BUFFER_SIZE`.
- * - Stops reading when a newline character (`\n`) is encountered or the end of
- *   the file is reached.
- * - Cleans up the buffer after extracting the line.
- *
- * @note
- * - The function is not thread-safe due to the use of a static buffer.
- * - The caller is responsible for freeing the memory allocated for the returned line.
+ * @note Not thread-safe due to the static buffer. Caller must free the returned
+ *       line.
  *
  * @example
- * #include <fcntl.h>
- * #include <stdio.h>
- * #include "get_next_line.h"
- *
- * int main(void)
+ * int fd = open("file.txt", O_RDONLY);
+ * char *line;
+ * while ((line = get_next_line(fd)))
  * {
- *     char *line;
- *     int fd;
- *
- *     fd = open("example.txt", O_RDONLY);
- *     if (fd < 0)
- *         return (1);
- *     while ((line = get_next_line(fd)))
- *     {
- *         printf("%s", line);
- *         free(line);
- *     }
- *     close(fd);
- *     return (0);
+ *     printf("%s", line);
+ *     free(line);
  * }
+ * close(fd);
  */
 
 #include "get_next_line.h"
