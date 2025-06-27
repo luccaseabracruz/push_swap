@@ -6,44 +6,14 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:39:29 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 13:55:19 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:59:33 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 #include <stdint.h>
 #include <stdlib.h>
-
-/**
- * @function ft_calloc
- * @brief Allocates and initializes memory to zero.
- *
- * Allocates memory for an array of `nmemb` elements, each of size `size`,
- * and initializes all bytes in the allocated memory to zero.
- *
- * @param nmemb Number of elements to allocate.
- * @param size Size of each element in bytes.
- * @return Pointer to the allocated memory, or `NULL` if allocation fails or
- *         if the requested size exceeds the maximum allowable size.
- */
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	char	*ptr;
-	size_t	i;
-
-	if (size != 0 && nmemb > (SIZE_MAX / size))
-		return (NULL);
-	ptr = malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (i < nmemb * size)
-	{
-		ptr[i] = '\0';
-		i++;
-	}
-	return (ptr);
-}
 
 /**
  * @function ft_linelen

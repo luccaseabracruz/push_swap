@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:58:18 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 13:54:58 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:59:30 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void	push(t_stack *from, t_stack *to)
 void	pa(t_stack *a, t_stack *b)
 {
 	push(b, a);
-	ft_putstr_fd("pa\n", 1);
+	ft_putstr_fd(PA, STD_OUT);
 }
 
 void	pb(t_stack *a, t_stack *b)
 {
 	push(a, b);
-	ft_putstr_fd("pb\n", 1);
+	ft_putstr_fd(PB, STD_OUT);
 }

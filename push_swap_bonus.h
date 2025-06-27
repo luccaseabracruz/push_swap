@@ -6,12 +6,15 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 17:48:35 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/24 18:40:21 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:03:20 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_BONUS_H
 # define PUSH_SWAP_BONUS_H
+
+# define OK "ok\n"
+# define KO "ko\n"
 
 # include "push_swap.h"
 

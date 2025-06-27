@@ -6,11 +6,12 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:02:46 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 13:12:27 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:10:29 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "push_swap_bonus.h"
 #include "libft.h"
 #include "get_next_line.h"
 #include <stdbool.h>
@@ -26,21 +27,21 @@ static bool	is_equal(char *s1, char *s2)
 
 static void	exec_single_move(t_stack *a, t_stack *b, char *move)
 {
-	if (is_equal(move, "pa\n"))
+	if (is_equal(move, PA))
 		push(b, a);
-	else if (is_equal(move, "pb\n"))
+	else if (is_equal(move, PB))
 		push(a, b);
-	else if (is_equal(move, "sa\n") || is_equal(move, "ss\n"))
+	else if (is_equal(move, SA) || is_equal(move, SS))
 		swap(a);
-	else if (is_equal(move, "sb\n") || is_equal(move, "ss\n"))
+	else if (is_equal(move, SB) || is_equal(move, SS))
 		swap(b);
-	else if (is_equal(move, "ra\n") || is_equal(move, "rr\n"))
+	else if (is_equal(move, RA) || is_equal(move, RR))
 		rotate(a);
-	else if (is_equal(move, "rb\n") || is_equal(move, "rr\n"))
+	else if (is_equal(move, RB) || is_equal(move, RR))
 		rotate(b);
-	else if (is_equal(move, "rra\n") || is_equal(move, "rrr\n"))
+	else if (is_equal(move, RRA) || is_equal(move, RRR))
 		reverse_rotate(a);
-	else if (is_equal(move, "rrb\n") || is_equal(move, "rrr\n"))
+	else if (is_equal(move, RRB) || is_equal(move, RRR))
 		reverse_rotate(b);
 }
 
@@ -48,12 +49,12 @@ static void	exec_all_moves(t_stack *a, t_stack *b)
 {
 	char	*move;
 
-	move = get_next_line(0);
+	move = get_next_line(STD_IN);
 	while (move && move[0])
 	{
 		exec_single_move(a, b, move);
 		free(move);
-		move = get_next_line(0);
+		move = get_next_line(STD_IN);
 	}
 	if (move)
 		free(move);
@@ -71,7 +72,13 @@ static bool	verify_stacks(t_stack *a, t_stack *b)
 		i++;
 	}
 	if (b->len != 0 || b->arr[0] != 0)
+	{
+		if (b->len != 0)
+			ft_putstr_fd("b->len != 0", STD_OUT);
+		else if (b->arr[0] != 0)
+			ft_putstr_fd("b->arr[0] != 0", STD_OUT);
 		return (0);
+	}
 	return (1);
 }
 
@@ -79,7 +86,7 @@ void	checker(t_stack *a, t_stack *b)
 {
 	exec_all_moves(a, b);
 	if (verify_stacks(a, b))
-		ft_putstr_fd("OK\n", 1);
+		ft_putstr_fd(OK, STD_OUT);
 	else
-		ft_putstr_fd("KO\n", 1);
+		ft_putstr_fd(KO, STD_OUT);
 }

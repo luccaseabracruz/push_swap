@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 13:06:58 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/25 15:53:09 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:59:37 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ void	reverse_rotate(t_stack *stack)
 void	rra(t_stack *a)
 {
 	reverse_rotate(a);
-	ft_putstr_fd("rra\n", 1);
+	ft_putstr_fd(RRA, STD_OUT);
 }
 
 void	rrb(t_stack *b)
 {
 	reverse_rotate(b);
-	ft_putstr_fd("rrb\n", 1);
+	ft_putstr_fd(RRB, STD_OUT);
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	ft_putstr_fd("rrr\n", 1);
+	ft_putstr_fd(RRR, STD_OUT);
 }

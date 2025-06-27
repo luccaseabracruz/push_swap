@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 14:01:01 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:02:41 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 # define PUSH_SWAP_H
 # include <stdio.h>
 # include <stdbool.h>
+
+# define PA "pa\n"
+# define PB "pb\n"
+# define SA "sa\n"
+# define SB "sb\n"
+# define SS "ss\n"
+# define RA "ra\n"
+# define RB "rb\n"
+# define RR "rr\n"
+# define RRA "rra\n"
+# define RRB "rrb\n"
+# define RRR "rrr\n"
+
+# define ERROR "Error"
+
+# define STD_IN 0
+# define STD_OUT 1
 
 typedef struct s_stack
 {
@@ -34,6 +51,7 @@ typedef struct moves
 }			t_moves;
 
 bool	init_stacks(t_stack *a, t_stack *b, char **arr, int len);
+long	ft_atol(const char *nptr);
 void	push(t_stack *from, t_stack *to);
 void	pa(t_stack *a, t_stack *b);
 void	pb(t_stack *a, t_stack *b);
