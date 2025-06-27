@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:02:46 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 17:23:34 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 17:41:25 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "get_next_line.h"
 #include <stdbool.h>
 #include <stdlib.h>
-//delete
-#include <stdio.h>
 
 static bool	is_equal(char *s1, char *s2)
 {
