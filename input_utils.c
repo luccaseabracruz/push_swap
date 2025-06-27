@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 13:41:17 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:03:01 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static bool	validate_num(char *str_num, t_stack *a)
 	i = 0;
 	while (i < a->len)
 	{
-		if (num == a->arr[i])
+		if ((int)num == a->arr[i])
 			return (0);
 		i++;
 	}
@@ -101,7 +101,7 @@ static bool	parse_input(t_stack *a, char **args)
 		{
 			if (!validate_num(current_args[j], a))
 				return (free_strarr(current_args, 0));
-			a->arr[i] = ft_atol(current_args[j]);
+			a->arr[i] = (int)ft_atol(current_args[j]);
 			j++;
 			i++;
 		}
@@ -112,10 +112,10 @@ static bool	parse_input(t_stack *a, char **args)
 
 bool	init_stacks(t_stack *a, t_stack *b, char **args, int len)
 {
-	a->arr = (long *)ft_calloc((size_t)len, sizeof(long));
+	a->arr = (int *)ft_calloc((size_t)len, sizeof(int));
 	if (!a->arr)
 		return (0);
-	b->arr = (long *)ft_calloc((size_t)len, sizeof(long));
+	b->arr = (int *)ft_calloc((size_t)len, sizeof(int));
 	if (!b->arr)
 		return (free_return(a->arr, 0));
 	a->len = len;
