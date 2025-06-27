@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:02:46 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 17:41:25 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 18:48:26 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static bool	verify_stacks(t_stack *a, t_stack *b, int args_len)
 	return (1);
 }
 
-void	checker(t_stack *a, t_stack *b, int	args_len)
+void	checker(t_stack *a, t_stack *b, int args_len)
 {
 	exec_all_moves(a, b);
 	if (verify_stacks(a, b, args_len))

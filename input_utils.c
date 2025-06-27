@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 17:39:56 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 18:47:37 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <limits.h>
+//delete
+#include <stdio.h>
 
 static size_t	count_args(char const *s)
 {
@@ -30,9 +32,7 @@ static size_t	count_args(char const *s)
 	while (s[i])
 	{
 		if (i > 0 && s[i] == ' ' && s[i - 1] != ' ')
-		{
 			counter++;
-		}
 		i++;
 	}
 	if (i > 0 && s[i - 1] != ' ')
@@ -86,25 +86,28 @@ static bool	validate_num(char *str_num, t_stack *a)
 
 static bool	parse_input(t_stack *a, char **args)
 {
-	int		i;
-	int		j;
+	int		arg_i;
+	int		arr_i;
+	int		current_args_i;
 	char	**current_args;
 
-	i = 0;
-	while (i < a->len)
+	arr_i = 0;
+	arg_i = 0;
+	while (arr_i < a->len)
 	{
-		current_args = ft_split((const char *)(args[i]), ' ');
+		current_args = ft_split((const char *)(args[arg_i]), ' ');
 		if (!current_args[0])
 			return (free_strarr(current_args, 0));
-		j = 0;
-		while (current_args[j])
+		current_args_i = 0;
+		while (current_args[current_args_i])
 		{
-			if (!validate_num(current_args[j], a))
+			if (!validate_num(current_args[current_args_i], a))
 				return (free_strarr(current_args, 0));
-			a->arr[i] = (int)ft_atol(current_args[j]);
-			j++;
-			i++;
+			a->arr[arr_i] = (int)ft_atol(current_args[current_args_i]);
+			arr_i++;
+			current_args_i++;
 		}
+		arg_i++;
 		free_strarr(current_args, 0);
 	}
 	return (1);

@@ -2,12 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug tests",
+      "name": "Debug tests_exec",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/tests",
+      "program": "${workspaceFolder}/tests_exec",
       "args": [
-        ""
+        "2",
+		"4 1",
+		"3"
       ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
@@ -15,7 +17,7 @@
       "externalConsole": false,
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
-      "preLaunchTask": "build main_bonus",
+      "preLaunchTask": "build main",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
