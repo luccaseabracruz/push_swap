@@ -6,12 +6,11 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 11:01:41 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/17 14:41:30 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 17:59:52 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf/libft/libft.h"
 #include <stdbool.h>
 
 static t_moves	find_cheapest(t_stack *a, t_stack *b)
@@ -98,13 +97,13 @@ void	push_swap(t_stack *a, t_stack *b)
 {
 	t_moves	moves;
 
-	push(a, b);
-	push(a, b);
+	pb(a, b);
+	pb(a, b);
 	while (a->len > 3)
 	{
 		moves = find_cheapest(a, b);
 		exec_moves(a, b, &moves);
-		push(a, b);
+		pb(a, b);
 	}
 	sort_three(a);
 	retrieve_numbers(a, b);

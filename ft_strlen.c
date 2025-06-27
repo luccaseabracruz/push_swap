@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_d.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 10:34:32 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/23 21:18:23 by lseabra-         ###   ########.fr       */
+/*   Created: 2025/04/08 20:54:45 by lseabra-          #+#    #+#             */
+/*   Updated: 2025/06/25 15:38:44 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdarg.h>
+#include <stddef.h>
 
-int	ft_print_d(va_list args)
+/**
+ * ft_strlen - Calculates the length of a null-terminated string.
+ * @param s: The string whose length is to be calculated.
+ *
+ * @return: The number of characters in the string, excluding the
+ * 			null terminator.
+ */
+size_t	ft_strlen(const char *s)
 {
-	int	arg;
+	size_t	i;
 
-	arg = va_arg(args, int);
-	return (ft_putnbr_count(arg));
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	return (i);
 }

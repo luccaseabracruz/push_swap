@@ -6,14 +6,14 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 18:29:37 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/29 18:07:10 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:59:46 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf/ft_printf.h"
+#include "libft.h"
 
-static void	swap(t_stack *stack)
+void	swap(t_stack *stack)
 {
 	int	temp;
 
@@ -28,45 +28,18 @@ static void	swap(t_stack *stack)
 void	sa(t_stack *a)
 {
 	swap(a);
-	ft_printf("sa\n");
+	ft_putstr_fd(SA, STD_OUT);
 }
 
 void	sb(t_stack *b)
 {
 	swap(b);
-	ft_printf("sb\n");
+	ft_putstr_fd(SB, STD_OUT);
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
 	swap(a);
 	swap(b);
-	ft_printf("ss\n");
+	ft_putstr_fd(SS, STD_OUT);
 }
-
-// #include <stdio.h>
-// #include <stdlib.h>
-// int	main(int argc, char **argv)
-// {
-// 	int	arr[argc - 1];
-// 	int	i;
-// 	if (argc >=2)
-// 	{
-// 		i = 0;
-// 		printf("Old version: \n");
-// 		while (i < argc - 1)
-// 		{
-// 			arr[i] = atoi(argv[i + 1]);
-// 			printf("p[%d]: %d\n", i, arr[i]);
-// 			i++;
-// 		}
-// 		swap(arr);
-// 		i = 0;
-// 		printf("New version: \n");
-// 		while (i < argc - 1)
-// 		{
-// 			printf("p[%d]: %d\n", i, arr[i]);
-// 			i++;
-// 		}
-// 	}
-// }

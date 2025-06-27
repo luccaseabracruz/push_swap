@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_count.c                                  :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 12:44:42 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/15 15:08:25 by lseabra-         ###   ########.fr       */
+/*   Created: 2025/04/09 11:01:03 by lseabra-          #+#    #+#             */
+/*   Updated: 2025/06/25 15:37:25 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stddef.h>
 
-int	ft_putstr_count(const char *s)
+/**
+ * ft_memset - Fills a block of memory with a specified value.
+ * @param s: Pointer to the memory block to fill.
+ * @param c: The value to set.
+ * @param n: The number of bytes to fill.
+ *
+ * @return A pointer to the memory block.
+ */
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int	counter;
+	char	*str;
+	size_t	i;
 
-	counter = 0;
-	while (*s)
+	str = (char *)s;
+	i = 0;
+	while (i < n)
 	{
-		counter += ft_putchar_count(*s);
-		s++;
+		str[i] = c;
+		i++;
 	}
-	return (counter);
+	return (s);
 }

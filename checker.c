@@ -6,61 +6,61 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:02:46 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/24 19:03:01 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 18:48:26 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "get_next_line_bonus.h"
-#include "ft_printf/libft/libft.h"
+#include "push_swap_bonus.h"
+#include "libft.h"
+#include "get_next_line.h"
 #include <stdbool.h>
 #include <stdlib.h>
 
+static bool	is_equal(char *s1, char *s2)
+{
+	if (!ft_strncmp((const char *)s1, (const char *)s2, ft_strlen(s1)))
+		return (1);
+	else
+		return (0);
+}
+
 static void	exec_single_move(t_stack *a, t_stack *b, char *move)
 {
-	if (!ft_strncmp((const char *)move, "pa\n", ft_strlen(move)))
+	if (is_equal(move, PA))
 		push(b, a);
-	else if (!ft_strncmp((const char *)move, "pb\n", ft_strlen(move)))
+	else if (is_equal(move, PB))
 		push(a, b);
-	else if (!ft_strncmp((const char *)move, "sa\n", ft_strlen(move)))
-		sa(a);
-	else if (!ft_strncmp((const char *)move, "sb\n", ft_strlen(move)))
-		sb(b);
-	else if (!ft_strncmp((const char *)move, "ss\n", ft_strlen(move)))
-		ss(a, b);
-	else if (!ft_strncmp((const char *)move, "ra\n", ft_strlen(move)))
-		ra(a);
-	else if (!ft_strncmp((const char *)move, "rb\n", ft_strlen(move)))
-		rb(b);
-	else if (!ft_strncmp((const char *)move, "rr\n", ft_strlen(move)))
-		rr(a, b);
-	else if (!ft_strncmp((const char *)move, "rra\n", ft_strlen(move)))
-		rra(a);
-	else if (!ft_strncmp((const char *)move, "rrb\n", ft_strlen(move)))
-		rrb(b);
-	else if (!ft_strncmp((const char *)move, "rrr\n", ft_strlen(move)))
-		rrr(a, b);
+	else if (is_equal(move, SA) || is_equal(move, SS))
+		swap(a);
+	else if (is_equal(move, SB) || is_equal(move, SS))
+		swap(b);
+	else if (is_equal(move, RA) || is_equal(move, RR))
+		rotate(a);
+	else if (is_equal(move, RB) || is_equal(move, RR))
+		rotate(b);
+	else if (is_equal(move, RRA) || is_equal(move, RRR))
+		reverse_rotate(a);
+	else if (is_equal(move, RRB) || is_equal(move, RRR))
+		reverse_rotate(b);
 }
 
 static void	exec_all_moves(t_stack *a, t_stack *b)
 {
 	char	*move;
 
-	move = get_next_line(0);
+	move = get_next_line(STD_IN);
 	while (move && move[0])
 	{
-		if (!ft_strncmp((const char *)move, "Error\n", ft_strlen(move)))
-		{
-			free(move);
-			exit(1) ;
-		}
 		exec_single_move(a, b, move);
-		move = get_next_line(0);
+		free(move);
+		move = get_next_line(STD_IN);
 	}
-	free(move);
+	if (move)
+		free(move);
 }
 
-static bool	verify_stacks(t_stack *a, t_stack *b)
+static bool	verify_stacks(t_stack *a, t_stack *b, int args_len)
 {
 	int	i;
 
@@ -71,16 +71,16 @@ static bool	verify_stacks(t_stack *a, t_stack *b)
 			return (0);
 		i++;
 	}
-	if (b->len != 0 || b->arr[0] != 0)
+	if (b->len != 0 || a->len != args_len)
 		return (0);
 	return (1);
 }
 
-void	checker(t_stack *a, t_stack *b)
+void	checker(t_stack *a, t_stack *b, int args_len)
 {
 	exec_all_moves(a, b);
-	if (verify_stacks(a, b))
-		ft_putstr_fd("OK", 1);
+	if (verify_stacks(a, b, args_len))
+		ft_putstr_fd(OK, STD_OUT);
 	else
-		ft_putstr_fd("KO", 1);
+		ft_putstr_fd(KO, STD_OUT);
 }

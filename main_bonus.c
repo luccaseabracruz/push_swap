@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 17:43:52 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/24 17:58:10 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 17:40:39 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,14 @@ int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
+	int		args_len;
 
+	args_len = arrlen(argv + 1);
 	if (argc > 1)
 	{
-		if (!init_stacks(&a, &b, (argv + 1), arrlen(argv + 1)))
+		if (!init_stacks(&a, &b, (argv + 1), args_len))
 			return (1);
-		if (a.len == 1)
-			return (0);
-		else if (a.len == 2 && a.arr[0] > a.arr[1])
-			sa(&a);
-		else if (a.len == 3)
-			sort_three(&a);
-		else
-			push_swap(&a, &b);
-		checker(&a, &b);
+		checker(&a, &b, args_len);
 		free(a.arr);
 		free(b.arr);
 	}

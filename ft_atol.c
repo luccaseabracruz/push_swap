@@ -6,15 +6,17 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 12:55:56 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/17 19:51:00 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:54:10 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 /**
- * @brief Converts a string to an integer.
+ * @brief Converts a string to an long.
  *
  * The ft_atol function parses the initial portion of the string pointed to by
- * nptr, ignoring leading whitespace characters, and converts it to an integer
+ * nptr, ignoring leading whitespace characters, and converts it to an long
  * value. It handles optional '+' or '-' signs to determine the sign of the
  * result. The conversion stops when a non-digit character is encountered, and
  * the function returns the long value converted up to that point.
@@ -22,9 +24,6 @@
  * @param nptr Pointer to the null-terminated string to be converted.
  * @return The converted long value.
  */
-
-#include "libft.h"
-
 long	ft_atol(const char *nptr)
 {
 	long	res;
@@ -49,21 +48,3 @@ long	ft_atol(const char *nptr)
 	}
 	return (sign * res);
 }
-/* 
-int	main(int argc, char ** argv)
-{
-	int	o;
-	int	m;
-	if (argc > 1)
-	{
-		o = atoi(argv[1]);
-		m = atoi(argv[1]);
-		if (o == m)
-			printf("SAME RESULT\n");
-		else
-			printf("SOMETHING IS WRONG WITH FT_ATOI\n");
-		printf("original: %d\n", o);
-		printf("my atoi:  %d\n", m);
-	}
-}
- */

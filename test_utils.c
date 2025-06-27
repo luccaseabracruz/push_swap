@@ -6,26 +6,26 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:53:39 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/16 18:09:24 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 13:41:38 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf/ft_printf.h"
+#include <stdio.h>
 
 void	print_stack(t_stack *stack)
 {
 	int	i;
 
 	i = 0;
-	ft_printf("A\n");
-	ft_printf("-\n");
+	printf("A\n");
+	printf("-\n");
 	while (i < stack->len)
 	{
-		ft_printf("%d\n", stack->arr[i]);
+		printf("%d\n", stack->arr[i]);
 		i++;
 	}
-	ft_printf("\n\n");
+	printf("\n\n");
 }
 
 void	print_stacks(t_stack *a, t_stack *b)
@@ -33,19 +33,19 @@ void	print_stacks(t_stack *a, t_stack *b)
 	int	i;
 
 	i = 0;
-	ft_printf("A | B\n");
-	ft_printf("-----\n");
+	printf("A | B\n");
+	printf("-----\n");
 	while (i < a->len || i < b->len)
 	{
 		if (i < a->len)
-			ft_printf("%d", a->arr[i]);
+			printf("%d", a->arr[i]);
 		else
-			ft_printf(" ");
-		ft_printf(" | ");
+			printf(" ");
+		printf(" | ");
 		if (i < b->len)
-			ft_printf("%d", b->arr[i]);
-		ft_printf("\n");
+			printf("%d", b->arr[i]);
+		printf("\n");
 		i++;
 	}
-	ft_printf("\n\n");
+	printf("\n\n");
 }
