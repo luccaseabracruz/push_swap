@@ -6,13 +6,22 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 14:58:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/26 15:48:32 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 13:41:24 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
+#include <stdbool.h>
 
-void	free_strarr(char **arr)
+bool	free_return(void *ptr, bool boolean)
+{
+	free(ptr);
+	ptr = NULL;
+	return (boolean);
+}
+
+bool	free_strarr(char **arr, bool boolean)
 {
 	int	i;
 
@@ -23,6 +32,16 @@ void	free_strarr(char **arr)
 		arr[i] = NULL;
 		i++;
 	}
-	free(arr);
-	arr = NULL;
+	return (free_return(arr, boolean));
+}
+
+void	print_error(char *message)
+{
+	ft_putstr_fd("Error", 1);
+	if (message)
+	{
+		ft_putstr_fd(": ", 1);
+		ft_putstr_fd(message, 1);
+	}
+	ft_putstr_fd("\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/26 15:06:36 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 13:41:17 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,17 +95,17 @@ static bool	parse_input(t_stack *a, char **args)
 	{
 		current_args = ft_split((const char *)(args[i]), ' ');
 		if (!current_args[0])
-			return (free_strarr(current_args), 0);
+			return (free_strarr(current_args, 0));
 		j = 0;
 		while (current_args[j])
 		{
 			if (!validate_num(current_args[j], a))
-				return (free_strarr(current_args), 0);
+				return (free_strarr(current_args, 0));
 			a->arr[i] = ft_atol(current_args[j]);
 			j++;
 			i++;
 		}
-		free_strarr(current_args);
+		free_strarr(current_args, 0);
 	}
 	return (1);
 }
@@ -117,7 +117,7 @@ bool	init_stacks(t_stack *a, t_stack *b, char **args, int len)
 		return (0);
 	b->arr = (long *)ft_calloc((size_t)len, sizeof(long));
 	if (!b->arr)
-		return (free(a->arr), 0);
+		return (free_return(a->arr, 0));
 	a->len = len;
 	b->len = 0;
 	a->name = "a";
@@ -126,7 +126,7 @@ bool	init_stacks(t_stack *a, t_stack *b, char **args, int len)
 	{
 		free(a->arr);
 		free(b->arr);
-		ft_putstr_fd("Error\n", 1);
+		print_error(NULL);
 		return (0);
 	}
 	return (1);

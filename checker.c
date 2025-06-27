@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:02:46 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/26 16:23:07 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 13:12:27 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static bool	is_equal(char *s1, char *s2)
 		return (0);
 }
 
-static bool	exec_single_move(t_stack *a, t_stack *b, char *move)
+static void	exec_single_move(t_stack *a, t_stack *b, char *move)
 {
 	if (is_equal(move, "pa\n"))
 		push(b, a);
@@ -42,11 +42,6 @@ static bool	exec_single_move(t_stack *a, t_stack *b, char *move)
 		reverse_rotate(a);
 	else if (is_equal(move, "rrb\n") || is_equal(move, "rrr\n"))
 		reverse_rotate(b);
-	else if (is_equal(move, "\n"))
-		return (1);
-	else
-		return (0);
-	return (1);
 }
 
 static void	exec_all_moves(t_stack *a, t_stack *b)
@@ -56,14 +51,7 @@ static void	exec_all_moves(t_stack *a, t_stack *b)
 	move = get_next_line(0);
 	while (move && move[0])
 	{
-		if (!exec_single_move(a, b, move))
-		{
-			free(move);
-			free(a->arr);
-			free(b->arr);
-			ft_putstr_fd("Error\n", 1);
-			exit(0);
-		}
+		exec_single_move(a, b, move);
 		free(move);
 		move = get_next_line(0);
 	}
