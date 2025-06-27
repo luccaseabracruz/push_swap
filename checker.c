@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:02:46 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 15:10:29 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/27 17:23:34 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "get_next_line.h"
 #include <stdbool.h>
 #include <stdlib.h>
+//delete
+#include <stdio.h>
 
 static bool	is_equal(char *s1, char *s2)
 {
@@ -60,7 +62,7 @@ static void	exec_all_moves(t_stack *a, t_stack *b)
 		free(move);
 }
 
-static bool	verify_stacks(t_stack *a, t_stack *b)
+static bool	verify_stacks(t_stack *a, t_stack *b, int args_len)
 {
 	int	i;
 
@@ -71,21 +73,15 @@ static bool	verify_stacks(t_stack *a, t_stack *b)
 			return (0);
 		i++;
 	}
-	if (b->len != 0 || b->arr[0] != 0)
-	{
-		if (b->len != 0)
-			ft_putstr_fd("b->len != 0", STD_OUT);
-		else if (b->arr[0] != 0)
-			ft_putstr_fd("b->arr[0] != 0", STD_OUT);
+	if (b->len != 0 || a->len != args_len)
 		return (0);
-	}
 	return (1);
 }
 
-void	checker(t_stack *a, t_stack *b)
+void	checker(t_stack *a, t_stack *b, int	args_len)
 {
 	exec_all_moves(a, b);
-	if (verify_stacks(a, b))
+	if (verify_stacks(a, b, args_len))
 		ft_putstr_fd(OK, STD_OUT);
 	else
 		ft_putstr_fd(KO, STD_OUT);
