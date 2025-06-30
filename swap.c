@@ -6,12 +6,12 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 18:29:37 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 14:59:46 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/30 13:49:01 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
+#include "libft/libft.h"
 
 void	swap(t_stack *stack)
 {

@@ -6,11 +6,11 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 12:55:56 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/25 15:54:10 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/30 18:18:03 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
 
 /**
  * @brief Converts a string to an long.

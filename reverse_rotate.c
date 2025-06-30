@@ -6,12 +6,12 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 13:06:58 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 14:59:37 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/30 13:48:57 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
+#include "libft/libft.h"
 
 void	reverse_rotate(t_stack *stack)
 {

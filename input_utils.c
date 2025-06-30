@@ -6,12 +6,12 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 18:47:37 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/30 13:48:56 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
+#include "libft/libft.h"
 #include <stdbool.h>
 #include <stdlib.h>
 #include <limits.h>

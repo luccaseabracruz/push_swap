@@ -6,16 +6,16 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:19:56 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/25 15:53:40 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/30 18:22:44 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
+#include "libft/libft.h"
 
 static void	opt_rr(t_moves *moves)
 {
-	int	cost;
+	int		cost;
 
 	cost = moves->rrb + (moves->rra - moves->rrb);
 	if (moves->rra >= moves->rrb && moves->total > cost)

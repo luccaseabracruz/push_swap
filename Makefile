@@ -6,13 +6,20 @@
 #    By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:12:49 by lseabra-          #+#    #+#              #
-#    Updated: 2025/06/27 16:54:48 by lseabra-         ###   ########.fr        #
+#    Updated: 2025/06/30 18:56:10 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #==============================================================================#
 #                                  VARIABLES                                   #
 #==============================================================================#
+
+# Colors
+GREEN = \033[0;32m
+YELLOW = \033[0;33m
+RED = \033[0;31m
+BLUE = \033[0;34m
+NO_COLOR = \033[0m
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -22,6 +29,7 @@ RM = rm -f
 RMDIR = rm -rf
 TCH = touch
 CP = cp
+MV = mv
 
 MAIN = main.c
 NAME = push_swap
@@ -42,24 +50,14 @@ OBJS = $(addprefix $(BUILD_PATH)/, $(SRCS:.c=.o))
 BUILD_PATH = build
 
 #LIBFT
-SRCS_LIBFT =	ft_bzero.c \
-				ft_calloc.c \
-				ft_isdigit.c \
-				ft_memset.c \
-				ft_putstr_fd.c \
-				ft_split.c \
-				ft_strlen.c \
-				ft_strncmp.c
-OBJS_LIBFT = $(addprefix $(BUILD_PATH)/, $(SRCS_LIBFT:.c=.o))
-#GET_NEXT_LINE
-SRCS_GNL =  get_next_line.c \
-			get_next_line_utils.c
-OBJS_GNL = $(addprefix $(BUILD_PATH)/, $(SRCS_GNL:.c=.o))
+LIBFT_PATH = libft
+LIBFT_LIB_NAME = libft.a
+
 #BONUS
-NAME_BONUS = checker
-MAIN_BONUS = main_bonus.c
+BONUS_NAME = checker
+BONUS_MAIN = main_bonus.c
 BONUS_MARK = .bonus
-SRCS_BONUS =	checker.c \
+BONUS_SRCS =	checker.c \
 				error_utils.c \
 				ft_atol.c \
 				input_utils.c \
@@ -67,8 +65,8 @@ SRCS_BONUS =	checker.c \
 				reverse_rotate.c \
 				rotate.c \
 				swap.c
-OBJS_BONUS = $(addprefix $(BUILD_PATH)/, $(SRCS_BONUS:.c=.o))
-LIB_NAME_BONUS = $(NAME_BONUS).a
+BONUS_OBJS = $(addprefix $(BUILD_PATH)/, $(BONUS_SRCS:.c=.o))
+BONUS_LIB_NAME = $(BONUS_NAME).a
 
 
 #==============================================================================#
@@ -80,36 +78,50 @@ LIB_NAME_BONUS = $(NAME_BONUS).a
 all: $(NAME)
 
 $(NAME): $(MAIN) $(LIB_NAME)
-	$(CC) $(CFLAGS) $(MAIN) $(LIB_NAME) -o $(NAME)
+	@$(CC) $(CFLAGS) $(MAIN) $(LIB_NAME) -o $(NAME)
+	@echo "$(GREEN)[Program Compiled: $(NAME)]"
 
-$(LIB_NAME): $(OBJS_LIBFT) $(OBJS)
-	$(AR) $(LIB_NAME) $(OBJS_LIBFT) $(OBJS)
+$(LIB_NAME): $(LIBFT_PATH)/$(LIBFT_LIB_NAME) $(OBJS)
+	@$(CP) $(LIBFT_PATH)/$(LIBFT_LIB_NAME) ./$(LIB_NAME)
+	@$(AR) $(LIB_NAME) $(OBJS)
+	@echo "$(BLUE)[Static Library created: $(LIB_NAME)]"
+
+$(LIBFT_PATH)/$(LIBFT_LIB_NAME):
+	@make -C $(LIBFT_PATH) 
+	@echo "$(BLUE)[Static Library created: $(LIBFT_LIB_NAME)]"
 
 $(BUILD_PATH)/%.o: %.c | $(BUILD_PATH)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_PATH):
-	$(MKDIR) $(BUILD_PATH)
+	@$(MKDIR) $(BUILD_PATH)
 
 clean:
-	$(RMDIR) $(BUILD_PATH)
+	@make -C $(LIBFT_PATH) clean
+	@$(RMDIR) $(BUILD_PATH)
+	@echo "$(GREEN)[Clean]"
 
 fclean: clean
-	$(RM) $(NAME)
-	$(RM) $(LIB_NAME)
-	$(RM) $(NAME_BONUS)
-	$(RM) $(LIB_NAME_BONUS)
-	$(RM) $(BONUS_MARK)
+	@make -C $(LIBFT_PATH) fclean
+	@$(RM) $(NAME)
+	@$(RM) $(LIB_NAME)
+	@$(RM) $(BONUS_NAME)
+	@$(RM) $(BONUS_LIB_NAME)
+	@$(RM) $(BONUS_MARK)
+	@echo "$(GREEN)[Full Clean]"
 
 re: fclean all
 
 bonus: $(BONUS_MARK)
 
-$(BONUS_MARK): $(NAME_BONUS)
-	$(TCH) $(BONUS_MARK)
+$(BONUS_MARK): $(BONUS_NAME)
+	@$(TCH) $(BONUS_MARK)
 
-$(NAME_BONUS): $(MAIN_BONUS) $(LIB_NAME_BONUS)
-	$(CC) $(CFLAGS) $(MAIN_BONUS) $(LIB_NAME_BONUS) -o $(NAME_BONUS)
+$(BONUS_NAME): $(BONUS_MAIN) $(BONUS_LIB_NAME)
+	@$(CC) $(CFLAGS) $(BONUS_MAIN) $(BONUS_LIB_NAME) -o $(BONUS_NAME)
+	@echo "$(GREEN)[Program Compiled: $(BONUS_NAME)]"
 
-$(LIB_NAME_BONUS): $(OBJS_LIBFT) $(OBJS_GNL) $(OBJS_BONUS)
-	$(AR) $(LIB_NAME_BONUS) $(OBJS_LIBFT) $(OBJS_GNL) $(OBJS_BONUS)
+$(BONUS_LIB_NAME): $(LIBFT_PATH)/$(LIBFT_LIB_NAME) $(BONUS_OBJS)
+	@$(CP) $(LIBFT_PATH)/$(LIBFT_LIB_NAME) ./$(BONUS_LIB_NAME)
+	@$(AR) $(BONUS_LIB_NAME) $(BONUS_OBJS)
+	@echo "$(BLUE)[Static Library created: $(BONUS_LIB_NAME)]"

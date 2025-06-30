@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 18:49:04 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:01:27 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,5 @@ void	retrieve_numbers(t_stack *a, t_stack *b);
 bool	free_strarr(char **arr, bool boolean);
 bool	free_return(void *ptr, bool boolean);
 void	print_error(char *message);
-
-//Test functions
-void	print_stacks(t_stack *a, t_stack *b);
-void	print_stack(t_stack *stack);
 
 #endif

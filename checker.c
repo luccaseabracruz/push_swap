@@ -6,14 +6,14 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:02:46 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 18:48:26 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/06/30 17:04:36 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "push_swap_bonus.h"
-#include "libft.h"
-#include "get_next_line.h"
+#include "libft/libft.h"
+#include "libft/get_next_line.h"
 #include <stdbool.h>
 #include <stdlib.h>
 
