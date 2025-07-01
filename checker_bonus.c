@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:02:46 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/01 14:18:48 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:27:19 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ static void	exec_single_move(t_stack *a, t_stack *b, char *move)
 		reverse_rotate(a);
 	else if (is_equal(move, RRB) || is_equal(move, RRR))
 		reverse_rotate(b);
+	else
+	{
+		free(move);
+		free(a->arr);
+		free(b->arr);
+		print_error(NULL);
+		exit(0);
+	}
 }
 
 static void	exec_all_moves(t_stack *a, t_stack *b)
