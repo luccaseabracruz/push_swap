@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:12:49 by lseabra-          #+#    #+#              #
-#    Updated: 2025/06/30 18:56:10 by lseabra-         ###   ########.fr        #
+#    Updated: 2025/07/01 13:59:57 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ TCH = touch
 CP = cp
 MV = mv
 
-MAIN = main.c
 NAME = push_swap
+MAIN = main.c
 LIB_NAME = $(NAME).a
 
 SRCS =			calc_moves.c \
@@ -57,7 +57,7 @@ LIBFT_LIB_NAME = libft.a
 BONUS_NAME = checker
 BONUS_MAIN = main_bonus.c
 BONUS_MARK = .bonus
-BONUS_SRCS =	checker.c \
+BONUS_SRCS =	checker_bonus.c \
 				error_utils.c \
 				ft_atol.c \
 				input_utils.c \

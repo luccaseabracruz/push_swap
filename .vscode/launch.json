@@ -7,9 +7,9 @@
       "request": "launch",
       "program": "${workspaceFolder}/tests_exec",
       "args": [
-        "2",
-		"4 1",
-		"3"
+        "0",
+        "4 1",
+        "3"
       ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
@@ -33,8 +33,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/lseabra-/common_core/push_swap",
-      "program": "/home/lseabra-/common_core/push_swap/build/Debug/outDebug",
+      "cwd": "/home/lseabra-/push_swap",
+      "program": "/home/lseabra-/push_swap/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

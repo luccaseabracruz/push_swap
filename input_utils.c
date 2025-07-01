@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/30 13:48:56 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:36:09 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static bool	validate_num(char *str_num, t_stack *a)
 			return (0);
 		i++;
 	}
-	num = (long)ft_atol(str_num);
+	num = ft_atol(str_num);
 	if (num < INT_MIN || num > INT_MAX)
 		return (0);
 	i = 0;
@@ -84,7 +84,7 @@ static bool	validate_num(char *str_num, t_stack *a)
 	return (1);
 }
 
-static bool	parse_input(t_stack *a, char **args)
+static bool	parse_input(t_stack *a, char **args, int len)
 {
 	int		arg_i;
 	int		arr_i;
@@ -93,19 +93,19 @@ static bool	parse_input(t_stack *a, char **args)
 
 	arr_i = 0;
 	arg_i = 0;
-	while (arr_i < a->len)
+	while (arr_i < len)
 	{
 		current_args = ft_split((const char *)(args[arg_i]), ' ');
 		if (!current_args[0])
 			return (free_strarr(current_args, 0));
-		current_args_i = 0;
-		while (current_args[current_args_i])
+		current_args_i = -1;
+		while (current_args[++current_args_i])
 		{
 			if (!validate_num(current_args[current_args_i], a))
 				return (free_strarr(current_args, 0));
 			a->arr[arr_i] = (int)ft_atol(current_args[current_args_i]);
+			a->len++;
 			arr_i++;
-			current_args_i++;
 		}
 		arg_i++;
 		free_strarr(current_args, 0);
@@ -121,11 +121,9 @@ bool	init_stacks(t_stack *a, t_stack *b, char **args, int len)
 	b->arr = (int *)ft_calloc((size_t)len, sizeof(int));
 	if (!b->arr)
 		return (free_return(a->arr, 0));
-	a->len = len;
+	a->len = 0;
 	b->len = 0;
-	a->name = "a";
-	b->name = "b";
-	if (!parse_input(a, args))
+	if (!parse_input(a, args, len))
 	{
 		free(a->arr);
 		free(b->arr);

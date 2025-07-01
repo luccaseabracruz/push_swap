@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 11:01:41 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/27 17:59:52 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:37:50 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ void	push_swap(t_stack *a, t_stack *b)
 {
 	t_moves	moves;
 
-	pb(a, b);
-	pb(a, b);
+	while (a->len > 3 && b-> len < 3)
+		pb(a, b);
 	while (a->len > 3)
 	{
 		moves = find_cheapest(a, b);
