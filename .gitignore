@@ -4,6 +4,7 @@ build
 ./tests/fails.txt
 push_swap
 checker
+fails.txt
 
 # Prerequisites
 *.d

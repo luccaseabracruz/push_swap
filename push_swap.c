@@ -6,11 +6,12 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 11:01:41 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/01 14:37:50 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/03 15:01:24 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft/libft.h"
 #include <stdbool.h>
 
 static t_moves	find_cheapest(t_stack *a, t_stack *b)
@@ -19,14 +20,13 @@ static t_moves	find_cheapest(t_stack *a, t_stack *b)
 	t_moves	current_moves;
 	int		i;
 
-	moves = calc_moves(a, b, 0);
-	i = 1;
-	while (i < a->len)
+	i = 0;
+	moves = calc_moves(a, b, i);
+	while (++i < a->len)
 	{
 		current_moves = calc_moves(a, b, i);
 		if (moves.total > current_moves.total)
 			moves = current_moves;
-		i++;
 	}
 	return (moves);
 }
