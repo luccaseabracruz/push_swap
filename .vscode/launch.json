@@ -9,7 +9,10 @@
       "args": [
         "0",
         "4 1",
-        "3"
+        "3",
+		"63",
+		"62"
+
       ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
