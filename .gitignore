@@ -1,7 +1,7 @@
 # My config
 build
 .bonus
-tests
+./tests/fails.txt
 push_swap
 checker
 
