@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/01 15:36:09 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:54:57 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static bool	parse_input(t_stack *a, char **args, int len)
 	return (1);
 }
 
-bool	init_stacks(t_stack *a, t_stack *b, char **args, int len)
+bool	init_stacks(t_stack *a, t_stack *b, t_stack *lis, char **args, int len)
 {
 	a->arr = (int *)ft_calloc((size_t)len, sizeof(int));
 	if (!a->arr)
@@ -121,6 +121,12 @@ bool	init_stacks(t_stack *a, t_stack *b, char **args, int len)
 	b->arr = (int *)ft_calloc((size_t)len, sizeof(int));
 	if (!b->arr)
 		return (free_return(a->arr, 0));
+	lis->arr = (int *)ft_calloc((size_t)len, sizeof(int));
+	if (!lis->arr)
+	{
+		free(a->arr);
+		return (free_return(b->arr, 0));
+	}
 	a->len = 0;
 	b->len = 0;
 	if (!parse_input(a, args, len))
@@ -130,5 +136,6 @@ bool	init_stacks(t_stack *a, t_stack *b, char **args, int len)
 		print_error(NULL);
 		return (0);
 	}
+	get_lis(lis, a);
 	return (1);
 }

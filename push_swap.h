@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/01 15:36:26 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/04 15:31:03 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct moves
 	int		total;
 }			t_moves;
 
-bool	init_stacks(t_stack *a, t_stack *b, char **arr, int len);
+bool	init_stacks(t_stack *a, t_stack *b, t_stack *lis, char **arr, int len);
 long	ft_atol(const char *nptr);
 void	push(t_stack *from, t_stack *to);
 void	pa(t_stack *a, t_stack *b);
@@ -69,10 +69,13 @@ void	rrr(t_stack *a, t_stack *b);
 t_moves	calc_moves(t_stack *a, t_stack *b, int pos);
 size_t	arrlen(char **args);
 void	sort_three(t_stack *a);
-void	push_swap(t_stack *a, t_stack *b);
+void	push_swap(t_stack *a, t_stack *b, t_stack *lis);
 void	retrieve_numbers(t_stack *a, t_stack *b);
 bool	free_strarr(char **arr, bool boolean);
 bool	free_return(void *ptr, bool boolean);
 void	print_error(char *message);
+bool	is_sorted(t_stack *a);
+void	get_lis(t_stack *lis, t_stack *stack);
+bool	is_in_lis(int pos, t_stack *lis);
 
 #endif
