@@ -6,24 +6,27 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 11:01:41 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/03 15:01:24 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/04 17:21:06 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
 #include <stdbool.h>
+#include <limits.h>
 
-static t_moves	find_cheapest(t_stack *a, t_stack *b)
+static t_moves	find_cheapest(t_stack *a, t_stack *b, t_stack *lis)
 {
 	t_moves	moves;
 	t_moves	current_moves;
 	int		i;
 
-	i = 0;
-	moves = calc_moves(a, b, i);
+	i = -1;
+	moves.total = INT_MAX;
 	while (++i < a->len)
 	{
+		if (is_in_lis(a->arr[i], lis))
+			continue ;
 		current_moves = calc_moves(a, b, i);
 		if (moves.total > current_moves.total)
 			moves = current_moves;
@@ -93,19 +96,63 @@ static void	smaller_to_top(t_stack *a)
 			rra(a);
 }
 
-void	push_swap(t_stack *a, t_stack *b)
+bool	is_sorted(t_stack *a)
+{
+	int	i;
+
+	i = 0;
+	while (i < a->len - 1)
+	{
+		if (a->arr[i] > a->arr[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+#include <stdio.h>
+void	print_stacks(t_stack *a, t_stack *b)
+{
+	int	i;
+
+	i = 0;
+	printf("A | LIS\n");
+	printf("-----\n");
+	while (i < a->len || i < b->len)
+	{
+		if (i < a->len)
+			printf("%d", a->arr[i]);
+		else
+			printf(" ");
+		printf(" | ");
+		if (i < b->len)
+			printf("%d",  b->arr[i]);
+		printf("\n");
+		i++;
+	}
+	printf("\n\n");
+}
+
+void	push_swap(t_stack *a, t_stack *b, t_stack *lis)
 {
 	t_moves	moves;
 
-	while (a->len > 3 && b-> len < 3)
-		pb(a, b);
-	while (a->len > 3)
+	// print_stacks(a, lis);
+	while (a->len > 3 && b-> len < 2 && !is_sorted(a) && a->len > lis->len)
 	{
-		moves = find_cheapest(a, b);
+		if (is_in_lis(a->arr[0], lis))
+			ra(a);
+		else
+			pb(a, b);
+	}
+	while (a->len > 3 && !is_sorted(a) && a->len > lis->len)
+	{
+		moves = find_cheapest(a, b, lis);
 		exec_moves(a, b, &moves);
 		pb(a, b);
 	}
-	sort_three(a);
+	if (a->len == 3)
+		sort_three(a);
 	retrieve_numbers(a, b);
 	smaller_to_top(a);
 }
