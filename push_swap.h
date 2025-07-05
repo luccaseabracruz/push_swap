@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/04 15:31:03 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/04 19:56:52 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 
 # define STD_IN 0
 # define STD_OUT 1
+# define STD_ERR 2
 
 typedef struct s_stack
 {

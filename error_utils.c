@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 14:58:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/30 13:48:53 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/04 20:01:11 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ bool	free_strarr(char **arr, bool boolean)
 
 void	print_error(char *message)
 {
-	ft_putstr_fd(ERROR, STD_OUT);
+	ft_putstr_fd(ERROR, STD_ERR);
 	if (message)
 	{
-		ft_putstr_fd(": ", STD_OUT);
-		ft_putstr_fd(message, STD_OUT);
+		ft_putstr_fd(": ", STD_ERR);
+		ft_putstr_fd(message, STD_ERR);
 	}
-	ft_putstr_fd("\n", STD_OUT);
+	ft_putstr_fd("\n", STD_ERR);
 }
