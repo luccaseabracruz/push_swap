@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/04 16:54:57 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:04:24 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,13 +129,13 @@ bool	init_stacks(t_stack *a, t_stack *b, t_stack *lis, char **args, int len)
 	}
 	a->len = 0;
 	b->len = 0;
-	if (!parse_input(a, args, len))
+	if (!parse_input(a, args, len) || get_lis(lis, a))
 	{
 		free(a->arr);
 		free(b->arr);
-		print_error(NULL);
+		if (!lis->arr)
+			print_error(NULL);
 		return (0);
 	}
-	get_lis(lis, a);
 	return (1);
 }

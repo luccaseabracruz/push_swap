@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/04 19:56:52 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:03:22 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ bool	free_strarr(char **arr, bool boolean);
 bool	free_return(void *ptr, bool boolean);
 void	print_error(char *message);
 bool	is_sorted(t_stack *a);
-void	get_lis(t_stack *lis, t_stack *stack);
+bool	get_lis(t_stack *lis, t_stack *stack);
 bool	is_in_lis(int pos, t_stack *lis);
 
 #endif

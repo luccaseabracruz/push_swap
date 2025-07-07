@@ -6,39 +6,46 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 19:04:01 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/04 17:18:23 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:04:30 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft/libft.h"
 #include <stdbool.h>
 
-void	get_lis(t_stack *lis, t_stack *stack)
+typedef struct s_lisdp
 {
+	int	max_value;
+	int	len;
+	int	*dp;
+	int	*prev;
+}			t_lisdp;
+
+bool	get_lis(t_stack *lis_stack, t_stack *stack)
+{
+	t_lisdp	lis;
 	int		i;
 	int		j;
 
-	lis->arr[0] = 0;
-	lis->len = 1;
+	lis.dp = ft_calloc(stack->len, sizeof(int));
+	if (!lis.dp)
+		return (0);
+	lis.dp = ft_calloc(stack->len, sizeof(int));
+	if (!lis.prev)
+		return (free_return(lis.dp, 0));
+	ft_memset(&lis, 0, sizeof(t_lisdp));
 	i = 0;
-	while (++i < stack->len)
+	// lis.dp[i] = 0;
+	lis.prev[i] = -1;
+	while (i < stack->len)
 	{
-		if (stack->arr[i] > stack->arr[lis->arr[lis->len - 1]])
-			lis->arr[lis->len++] = i;
-		else
+		j = 0;
+		while (j < i)
 		{
-			j = 0;
-			while (j < lis->len && stack->arr[i] > stack->arr[lis->arr[j]])
-				j++;
-			lis->arr[j] = i;
-			lis->len = j + 1;
+			if (stack->arr[j] < stack->arr[i] && lis.dp[j] + 1 > lis.dp[i])
+
 		}
-	}
-	i = 0;
-	while (i < lis->len)
-	{
-		lis->arr[i] = stack->arr[lis->arr[i]];
-		i++;
 	}
 }
 
