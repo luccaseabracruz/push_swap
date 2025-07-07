@@ -6,47 +6,77 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 19:04:01 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/07 15:04:30 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/07 22:41:53 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
+#include <stdlib.h>
 #include <stdbool.h>
 
-typedef struct s_lisdp
+static void	parse_tabulation(t_lisdp *lis, t_stack *a)
 {
-	int	max_value;
-	int	len;
-	int	*dp;
-	int	*prev;
-}			t_lisdp;
-
-bool	get_lis(t_stack *lis_stack, t_stack *stack)
-{
-	t_lisdp	lis;
 	int		i;
 	int		j;
 
-	lis.dp = ft_calloc(stack->len, sizeof(int));
-	if (!lis.dp)
-		return (0);
-	lis.dp = ft_calloc(stack->len, sizeof(int));
-	if (!lis.prev)
-		return (free_return(lis.dp, 0));
-	ft_memset(&lis, 0, sizeof(t_lisdp));
 	i = 0;
-	// lis.dp[i] = 0;
-	lis.prev[i] = -1;
-	while (i < stack->len)
+	while (i < a->len)
 	{
+		lis->dp[i] = 1;
+		lis->prev[i] = -1;
 		j = 0;
 		while (j < i)
 		{
-			if (stack->arr[j] < stack->arr[i] && lis.dp[j] + 1 > lis.dp[i])
-
+			if (a->arr[j] < a->arr[i] && lis->dp[j] + 1 > lis->dp[i])
+			{
+				lis->dp[i] = lis->dp[j] + 1;
+				lis->prev[i] = j;
+			}
+			j++;
 		}
+		if (lis->dp[i] > lis->max_len)
+		{
+			lis->max_len = lis->dp[i];
+			lis->lst_i = i;
+		}
+		i++;
 	}
+}
+
+static void	parse_lisstack(t_lisdp *lis, t_stack *lis_stk, t_stack *a)
+{
+	while (lis->lst_i != -1)
+	{
+		lis_stk->arr[(lis->max_len - 1) - lis_stk->len] = a->arr[lis->lst_i];
+		lis->lst_i = lis->prev[lis->lst_i];
+		lis_stk->len++;
+	}
+}
+
+bool	init_lis(t_stack *lis_stk, t_stack *a)
+{
+	t_lisdp	lis;
+
+	ft_memset(&lis, 0, sizeof(t_lisdp));
+	lis.dp = ft_calloc((size_t)a->len, sizeof(int));
+	if (!lis.dp)
+		return (0);
+	lis.prev = ft_calloc((size_t)a->len, sizeof(int));
+	if (!lis.prev)
+		return (free_return(lis.dp, 0));
+	parse_tabulation(&lis, a);
+	lis_stk->arr = ft_calloc((size_t)lis.max_len, sizeof(int));
+	if (!lis_stk->arr)
+	{
+		free(lis.dp);
+		return (free_return(lis.prev, 0));
+	}
+	lis_stk->len = 0;
+	parse_lisstack(&lis, lis_stk, a);
+	free(lis.dp);
+	free(lis.prev);
+	return (1);
 }
 
 bool	is_in_lis(int n, t_stack *lis)

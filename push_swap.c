@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 11:01:41 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/04 17:21:06 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:59:31 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,6 @@ void	push_swap(t_stack *a, t_stack *b, t_stack *lis)
 {
 	t_moves	moves;
 
-	// print_stacks(a, lis);
 	while (a->len > 3 && b-> len < 2 && !is_sorted(a) && a->len > lis->len)
 	{
 		if (is_in_lis(a->arr[0], lis))

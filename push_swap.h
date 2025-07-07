@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/07 15:03:22 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/07 21:39:29 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ typedef struct s_stack
 	int		len;
 }			t_stack;
 
+typedef struct s_lisdp
+{
+	int	max_len;
+	int	lst_i;
+	int	*dp;
+	int	*prev;
+}			t_lisdp;
+
 typedef struct moves
 {
 	int		ra;
@@ -50,7 +58,7 @@ typedef struct moves
 	int		total;
 }			t_moves;
 
-bool	init_stacks(t_stack *a, t_stack *b, t_stack *lis, char **arr, int len);
+bool	init_stacks(t_stack *a, t_stack *b, char **arr, int len);
 long	ft_atol(const char *nptr);
 void	push(t_stack *from, t_stack *to);
 void	pa(t_stack *a, t_stack *b);
@@ -76,7 +84,7 @@ bool	free_strarr(char **arr, bool boolean);
 bool	free_return(void *ptr, bool boolean);
 void	print_error(char *message);
 bool	is_sorted(t_stack *a);
-bool	get_lis(t_stack *lis, t_stack *stack);
 bool	is_in_lis(int pos, t_stack *lis);
+bool	init_lis(t_stack *lis, t_stack *a);
 
 #endif

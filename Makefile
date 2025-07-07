@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:12:49 by lseabra-          #+#    #+#              #
-#    Updated: 2025/07/04 14:56:21 by lseabra-         ###   ########.fr        #
+#    Updated: 2025/07/07 21:04:37 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,14 +39,14 @@ SRCS =			calc_moves.c \
 				error_utils.c \
 				ft_atol.c \
 				input_utils.c \
+				lis_utils.c \
 				push_swap.c \
 				push.c \
 				retrieve_numbers.c \
 				reverse_rotate.c \
 				rotate.c \
 				sort_three.c \
-				swap.c \
-				lis_utils.c
+				swap.c
 OBJS = $(addprefix $(BUILD_PATH)/, $(SRCS:.c=.o))
 BUILD_PATH = build
 
