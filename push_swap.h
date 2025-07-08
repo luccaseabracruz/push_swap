@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/08 12:04:58 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:11:03 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	reverse_rotate(t_stack *stack);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
-t_moves	find_cheapest(t_stack *a, t_stack *b, t_stack *lis);
+t_moves	find_cheapest(t_stack *a, t_stack *b, t_stack *lis, int max_len);
 size_t	arrlen(char **args);
 void	sort_three(t_stack *a);
 void	push_swap(t_stack *a, t_stack *b, t_stack *lis);

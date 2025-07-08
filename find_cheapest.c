@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:19:56 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/08 12:05:55 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:17:09 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static t_moves	calc_moves(t_stack *a, t_stack *b, int pos)
 	return (moves);
 }
 
-t_moves	find_cheapest(t_stack *a, t_stack *b, t_stack *lis)
+t_moves	find_cheapest(t_stack *a, t_stack *b, t_stack *lis, int max_len)
 {
 	t_moves	moves;
 	t_moves	current_moves;
@@ -105,7 +105,7 @@ t_moves	find_cheapest(t_stack *a, t_stack *b, t_stack *lis)
 	moves.total = INT_MAX;
 	while (++i < a->len)
 	{
-		if (is_in_lis(a->arr[i], lis))
+		if (max_len > 5 && is_in_lis(a->arr[i], lis))
 			continue ;
 		current_moves = calc_moves(a, b, i);
 		if (moves.total > current_moves.total)

@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 15:09:14 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/07 22:40:45 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:54:51 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,15 @@ int	main(int argc, char **argv)
 			free(a.arr);
 			return (free_return(b.arr, 1));
 		}
-		if (is_sorted(&a))
-			return (0);
-		else if (a.len == 2 && a.arr[0] > a.arr[1])
+		else if (!is_sorted(&a) && a.len == 2 && a.arr[0] > a.arr[1])
 			sa(&a);
-		else if (a.len == 3)
+		else if (!is_sorted(&a) && a.len == 3)
 			sort_three(&a);
-		else if (a.len > 3)
+		else if (!is_sorted(&a) && a.len > 3)
 			push_swap(&a, &b, &lis_stk);
 		free(a.arr);
 		free(b.arr);
 		free(lis_stk.arr);
 	}
+	return (0);
 }

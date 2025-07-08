@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 11:01:41 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/08 12:02:56 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:27:53 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,19 @@ bool	is_sorted(t_stack *a)
 void	push_swap(t_stack *a, t_stack *b, t_stack *lis)
 {
 	t_moves	moves;
+	int		max_len;
 
-	while (a->len > 3 && b-> len < 2 && !is_sorted(a) && a->len > lis->len)
+	max_len = a->len;
+	while (a->len > 3 && b->len < 2 && !is_sorted(a))
 	{
-		if (is_in_lis(a->arr[0], lis))
+		if ((max_len > 5) && is_in_lis(a->arr[0], lis))
 			ra(a);
 		else
 			pb(a, b);
 	}
 	while (a->len > 3 && !is_sorted(a) && a->len > lis->len)
 	{
-		moves = find_cheapest(a, b, lis);
+		moves = find_cheapest(a, b, lis, max_len);
 		exec_moves(a, b, &moves);
 		pb(a, b);
 	}
