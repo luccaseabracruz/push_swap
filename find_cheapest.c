@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_moves.c                                       :+:      :+:    :+:   */
+/*   find_cheapest.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:19:56 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/30 18:22:44 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:17:09 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
+#include <limits.h>
 
 static void	opt_rr(t_moves *moves)
 {
@@ -81,7 +82,7 @@ static int	find_best_pos(int n, t_stack *stack)
 	return (best_pos);
 }
 
-t_moves	calc_moves(t_stack *a, t_stack *b, int pos)
+static t_moves	calc_moves(t_stack *a, t_stack *b, int pos)
 {
 	t_moves	moves;
 
@@ -91,5 +92,24 @@ t_moves	calc_moves(t_stack *a, t_stack *b, int pos)
 	moves.rb = find_best_pos(a->arr[pos], b);
 	moves.rrb = b->len - moves.rb;
 	opt_moves(&moves);
+	return (moves);
+}
+
+t_moves	find_cheapest(t_stack *a, t_stack *b, t_stack *lis, int max_len)
+{
+	t_moves	moves;
+	t_moves	current_moves;
+	int		i;
+
+	i = -1;
+	moves.total = INT_MAX;
+	while (++i < a->len)
+	{
+		if (max_len > 5 && is_in_lis(a->arr[i], lis))
+			continue ;
+		current_moves = calc_moves(a, b, i);
+		if (moves.total > current_moves.total)
+			moves = current_moves;
+	}
 	return (moves);
 }

@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:12:49 by lseabra-          #+#    #+#              #
-#    Updated: 2025/07/01 13:59:57 by lseabra-         ###   ########.fr        #
+#    Updated: 2025/07/08 12:04:28 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,11 @@ NAME = push_swap
 MAIN = main.c
 LIB_NAME = $(NAME).a
 
-SRCS =			calc_moves.c \
+SRCS =			find_cheapest.c \
 				error_utils.c \
 				ft_atol.c \
 				input_utils.c \
+				lis_utils.c \
 				push_swap.c \
 				push.c \
 				retrieve_numbers.c \

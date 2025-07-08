@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/26 17:06:04 by lseabra-          #+#    #+#              #
-#    Updated: 2025/07/03 14:20:06 by lseabra-         ###   ########.fr        #
+#    Updated: 2025/07/04 17:25:14 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,14 +36,6 @@ FAILS_FILE = fails.txt
 #==============================================================================#
 
 all: $(PROGRAM) $(CHEKER)
-
-$(PROGRAM):
-	make -C ../
-
-$(CHECKER):
-	make -C ../ bonus
-
-test: all $(PROGRAM)
 	@echo "$(YELLOW)\n\n\n[ORDERED NUMBERS TESTS ( < 1)]"
 	@./$(TEST_ORDERED)
 	@echo "$(YELLOW)\n\n\n[5 RANDOM NUMBERS TESTS ( < 12 operations)]"
@@ -52,6 +44,12 @@ test: all $(PROGRAM)
 	@./$(TEST_100_RANDOM)
 	@echo "$(YELLOW)\n\n\n[500 RANDOM NUMBERS TESTS ( < 5500 operations)]"
 	@./$(TEST_500_RANDOM)
+
+$(PROGRAM):
+	make -C ../
+
+$(CHECKER):
+	make -C ../ bonus
 
 clean:
 	rm $(FAILS_FILE)	

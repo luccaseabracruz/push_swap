@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:21:11 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/01 15:36:09 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/08 14:32:36 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <limits.h>
-//delete
-#include <stdio.h>
 
 static size_t	count_args(char const *s)
 {
@@ -125,10 +123,9 @@ bool	init_stacks(t_stack *a, t_stack *b, char **args, int len)
 	b->len = 0;
 	if (!parse_input(a, args, len))
 	{
-		free(a->arr);
-		free(b->arr);
 		print_error(NULL);
-		return (0);
+		free(a->arr);
+		return (free_return(b->arr, 0));
 	}
 	return (1);
 }

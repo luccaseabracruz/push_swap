@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:02:46 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/01 16:27:19 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/08 14:14:44 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,48 @@ static bool	is_equal(char *s1, char *s2)
 		return (0);
 }
 
-static void	exec_single_move(t_stack *a, t_stack *b, char *move)
+static void	exec_combined(t_stack *a, t_stack *b, char *move)
+{
+	if (is_equal(move, SS))
+	{
+		swap(a);
+		swap(b);
+	}
+	else if (is_equal(move, RR))
+	{
+		rotate(a);
+		rotate(b);
+	}
+	else if (is_equal(move, RRR))
+	{
+		reverse_rotate(a);
+		reverse_rotate(b);
+	}
+}
+
+static bool	exec_single_move(t_stack *a, t_stack *b, char *move)
 {
 	if (is_equal(move, PA))
 		push(b, a);
 	else if (is_equal(move, PB))
 		push(a, b);
-	else if (is_equal(move, SA) || is_equal(move, SS))
+	else if (is_equal(move, SA))
 		swap(a);
-	else if (is_equal(move, SB) || is_equal(move, SS))
+	else if (is_equal(move, SB))
 		swap(b);
-	else if (is_equal(move, RA) || is_equal(move, RR))
+	else if (is_equal(move, RA))
 		rotate(a);
-	else if (is_equal(move, RB) || is_equal(move, RR))
+	else if (is_equal(move, RB))
 		rotate(b);
-	else if (is_equal(move, RRA) || is_equal(move, RRR))
+	else if (is_equal(move, RRA))
 		reverse_rotate(a);
-	else if (is_equal(move, RRB) || is_equal(move, RRR))
+	else if (is_equal(move, RRB))
 		reverse_rotate(b);
+	else if (is_equal(move, SS) || is_equal(move, RR) || is_equal(move, RRR))
+		exec_combined(a, b, move);
 	else
-	{
-		free(move);
-		free(a->arr);
-		free(b->arr);
-		print_error(NULL);
-		exit(0);
-	}
+		return (0);
+	return (1);
 }
 
 static void	exec_all_moves(t_stack *a, t_stack *b)
@@ -60,7 +76,14 @@ static void	exec_all_moves(t_stack *a, t_stack *b)
 	move = get_next_line(STD_IN);
 	while (move && move[0])
 	{
-		exec_single_move(a, b, move);
+		if (!exec_single_move(a, b, move))
+		{
+			free(move);
+			free(a->arr);
+			free(b->arr);
+			print_error(NULL);
+			exit(1);
+		}
 		free(move);
 		move = get_next_line(STD_IN);
 	}
@@ -68,27 +91,23 @@ static void	exec_all_moves(t_stack *a, t_stack *b)
 		free(move);
 }
 
-static bool	verify_stacks(t_stack *a, t_stack *b, int args_len)
+void	checker(t_stack *a, t_stack *b, int args_len)
 {
 	int	i;
 
+	exec_all_moves(a, b);
 	i = 0;
 	while (i < a->len - 1)
 	{
 		if (a->arr[i] > a->arr[i + 1])
-			return (0);
+		{
+			ft_putstr_fd(KO, STD_OUT);
+			return ;
+		}
 		i++;
 	}
 	if (b->len != 0 || a->len != args_len)
-		return (0);
-	return (1);
-}
-
-void	checker(t_stack *a, t_stack *b, int args_len)
-{
-	exec_all_moves(a, b);
-	if (verify_stacks(a, b, args_len))
-		ft_putstr_fd(OK, STD_OUT);
-	else
 		ft_putstr_fd(KO, STD_OUT);
+	else
+		ft_putstr_fd(OK, STD_OUT);
 }

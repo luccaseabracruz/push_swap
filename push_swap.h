@@ -6,14 +6,14 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/01 15:36:26 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/08 14:31:42 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include <stdio.h>
 # include <stdbool.h>
+# include <stddef.h>
 
 # define PA "pa\n"
 # define PB "pb\n"
@@ -31,12 +31,21 @@
 
 # define STD_IN 0
 # define STD_OUT 1
+# define STD_ERR 2
 
 typedef struct s_stack
 {
 	int		*arr;
 	int		len;
 }			t_stack;
+
+typedef struct s_lisdp
+{
+	int	max_len;
+	int	lst_i;
+	int	*dp;
+	int	*prev;
+}			t_lisdp;
 
 typedef struct moves
 {
@@ -66,13 +75,16 @@ void	reverse_rotate(t_stack *stack);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
-t_moves	calc_moves(t_stack *a, t_stack *b, int pos);
+t_moves	find_cheapest(t_stack *a, t_stack *b, t_stack *lis, int max_len);
 size_t	arrlen(char **args);
 void	sort_three(t_stack *a);
-void	push_swap(t_stack *a, t_stack *b);
+void	push_swap(t_stack *a, t_stack *b, t_stack *lis);
 void	retrieve_numbers(t_stack *a, t_stack *b);
 bool	free_strarr(char **arr, bool boolean);
 bool	free_return(void *ptr, bool boolean);
 void	print_error(char *message);
+bool	is_sorted(t_stack *a);
+bool	is_in_lis(int pos, t_stack *lis);
+bool	init_lis(t_stack *lis, t_stack *a);
 
 #endif

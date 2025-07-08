@@ -6,30 +6,13 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 11:01:41 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/03 15:01:24 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:27:53 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
 #include <stdbool.h>
-
-static t_moves	find_cheapest(t_stack *a, t_stack *b)
-{
-	t_moves	moves;
-	t_moves	current_moves;
-	int		i;
-
-	i = 0;
-	moves = calc_moves(a, b, i);
-	while (++i < a->len)
-	{
-		current_moves = calc_moves(a, b, i);
-		if (moves.total > current_moves.total)
-			moves = current_moves;
-	}
-	return (moves);
-}
 
 static void	exec_reverse(t_stack *a, t_stack *b, t_moves *moves)
 {
@@ -93,19 +76,41 @@ static void	smaller_to_top(t_stack *a)
 			rra(a);
 }
 
-void	push_swap(t_stack *a, t_stack *b)
+bool	is_sorted(t_stack *a)
+{
+	int	i;
+
+	i = 0;
+	while (i < a->len - 1)
+	{
+		if (a->arr[i] > a->arr[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	push_swap(t_stack *a, t_stack *b, t_stack *lis)
 {
 	t_moves	moves;
+	int		max_len;
 
-	while (a->len > 3 && b-> len < 3)
-		pb(a, b);
-	while (a->len > 3)
+	max_len = a->len;
+	while (a->len > 3 && b->len < 2 && !is_sorted(a))
 	{
-		moves = find_cheapest(a, b);
+		if ((max_len > 5) && is_in_lis(a->arr[0], lis))
+			ra(a);
+		else
+			pb(a, b);
+	}
+	while (a->len > 3 && !is_sorted(a) && a->len > lis->len)
+	{
+		moves = find_cheapest(a, b, lis, max_len);
 		exec_moves(a, b, &moves);
 		pb(a, b);
 	}
-	sort_three(a);
+	if (a->len == 3)
+		sort_three(a);
 	retrieve_numbers(a, b);
 	smaller_to_top(a);
 }
