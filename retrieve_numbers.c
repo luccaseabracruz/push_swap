@@ -6,13 +6,13 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 18:24:14 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/06/25 15:25:21 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:29:30 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	find_best_pos(int n, t_stack *stack)
+static int	find_best_pos_ret(int n, t_stack *stack)
 {
 	int	i;
 	int	best_pos;
@@ -43,7 +43,7 @@ void	retrieve_numbers(t_stack *a, t_stack *b)
 
 	while (b->len > 0)
 	{
-		best_pos = find_best_pos(b->arr[0], a);
+		best_pos = find_best_pos_ret(b->arr[0], a);
 		i = 0;
 		if (best_pos <= (a->len / 2))
 		{

@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 19:04:01 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/07 22:41:53 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:26:59 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	parse_tabulation(t_lisdp *lis, t_stack *a)
 	}
 }
 
-static void	parse_lisstack(t_lisdp *lis, t_stack *lis_stk, t_stack *a)
+static void	parse_lis_stk(t_lisdp *lis, t_stack *lis_stk, t_stack *a)
 {
 	while (lis->lst_i != -1)
 	{
@@ -73,7 +73,7 @@ bool	init_lis(t_stack *lis_stk, t_stack *a)
 		return (free_return(lis.prev, 0));
 	}
 	lis_stk->len = 0;
-	parse_lisstack(&lis, lis_stk, a);
+	parse_lis_stk(&lis, lis_stk, a);
 	free(lis.dp);
 	free(lis.prev);
 	return (1);

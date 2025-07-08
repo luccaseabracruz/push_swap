@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:02:46 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/01 16:27:19 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:20:28 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	exec_single_move(t_stack *a, t_stack *b, char *move)
 		free(a->arr);
 		free(b->arr);
 		print_error(NULL);
-		exit(0);
+		exit(1);
 	}
 }
 
