@@ -6,14 +6,14 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 14:03:13 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/07/08 13:11:03 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/07/08 14:31:42 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include <stdio.h>
 # include <stdbool.h>
+# include <stddef.h>
 
 # define PA "pa\n"
 # define PB "pb\n"
